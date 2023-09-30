@@ -10,11 +10,11 @@ void nhanvien :: DocFile(ifstream &filein){
     string s;
     getline(filein, s, ',');
     maNV = a + s;
-    // cout << maNV << endl;
+    cout << maNV << endl;
     filein >> a;
     getline(filein, s, ',');
     hoTen = a + s;
-    // cout << hoTen << endl;
+    cout << hoTen << endl;
     int ngay, thang, nam;
     filein >> ngay;
     namSinh.setNgay(ngay);
