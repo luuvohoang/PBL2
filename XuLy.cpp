@@ -3,24 +3,7 @@
 #include "NhanSu.h"
 #include <string>
 using namespace std;
-void NhanSu :: Xuat (){
-    cout <<"\n Ma: " << maNV;
-    cout <<"\n Ho ten: " << hoTen;
-    cout << "\n Ngay thang nam sinh: " << namSinh.getNgay() <<"/" << namSinh.getThang() <<"/" << namSinh.getNam();
-    cout << "\n Gioi Tinh: " << gioiTinh;
-    char a = maNV[1];
-    string s;
-    if(a == '1') s = "Ha Noi";
-    else s= "Da Nang";
-    cout << "\n Don vi: " << s;
-    a = maNV[3];
-    if(a == '1') s = "Giam Doc";
-    else if(a == '2') s = "Pho Giam Doc";
-    else if(a == '3') s = "Truong Phong";
-    else if(a == '4') s = "Pho Phong";
-    else s = "Nhan Vien";
-    cout << "\n Chuc vu: " <<  s;
-}
+
 void Menu(NhanSu *ds[], int &n){
     
     ifstream filein;
@@ -28,18 +11,16 @@ void Menu(NhanSu *ds[], int &n){
     // fileout.open("DanhSachNhanVien.txt", ios_base::out);
 
     while (true){
-        cout << "\n\n\t\t ====== MENU ======";
-        cout << "\n 1. Doc thong tin nhan vien";
-        cout << "\n 2. Xuat thong tin nhan vien";
-        cout << "\n 0. Ket thuc";
-        cout << "\n\n\t\t ====== END ======";
+        cout << "\n\n\t\t\t\t================ MENU  ==============";
+        cout << "\n\n\t\t\t\t 1. Doc thong tin nhan vien";
+        cout << "\n\t\t\t\t 2. Xuat thong tin nhan vien";
+        cout << "\n\t\t\t\t 0. Ket thuc";
+        cout << "\n\n\t\t\t\t=====================================";
 
         int luachon;
-        cout << "\n Nhap lua chon: ";
+        cout << "\n\n\t\t\t\tNhap lua chon: ";
         cin >> luachon;
-        // int n;
-        // filein >> n;
-        // cout << n;
+  
         if(luachon == 1){
             filein >> n;
             // nhanvien *x = NULL; 
@@ -48,12 +29,15 @@ void Menu(NhanSu *ds[], int &n){
                 x->DocFile(filein);
                 ds[i] = x;
             }
+            cout << "\n\t\t\t\tDa Doc Thong Tin Nhan Vien !\n";
         }
         else if(luachon == 2){
             for(int i=0;i<n;i++){
-                cout << "\n\n\t NHAN VIEN THU " << i+1 << endl;
+                cout << "\n\t\t\t\t" <<i+1<<".  NHAN VIEN THU " << i+1 << endl;
                 ds[i]->Xuat();
+                cout << "\n\t\t\t\t=====================================";
             }
+                cout << "\n\t\t\t\t=====================================";
         }
         else {
             break;

@@ -41,6 +41,7 @@ class NhanSu{
         double luong;
         double phuCap;
         double thucLinh;
+        date ngayVaoLam;
     public:
         virtual void DocFile(ifstream &);
         virtual void Xuat(); 
