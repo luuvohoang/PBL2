@@ -1,9 +1,9 @@
 #include<iostream>
 #include <fstream>
-#include "nhanvien.h"
+#include "NhanSu.h"
 #include <string>
 using namespace std;
-void nhanvien :: Xuat (){
+void NhanSu :: Xuat (){
     cout <<"\n Ma: " << maNV;
     cout <<"\n Ho ten: " << hoTen;
     cout << "\n Ngay thang nam sinh: " << namSinh.getNgay() <<"/" << namSinh.getThang() <<"/" << namSinh.getNam();
@@ -21,10 +21,10 @@ void nhanvien :: Xuat (){
     else s = "Nhan Vien";
     cout << "\n Chuc vu: " <<  s;
 }
-void Menu(nhanvien *ds[], int &n){
+void Menu(NhanSu *ds[], int &n){
     
     ifstream filein;
-    filein.open("NhanVien.txt", ios_base::in);
+    filein.open("NhanSu.txt", ios_base::in);
     // fileout.open("DanhSachNhanVien.txt", ios_base::out);
 
     while (true){
@@ -44,7 +44,7 @@ void Menu(nhanvien *ds[], int &n){
             filein >> n;
             // nhanvien *x = NULL; 
             for(int i = 0; i < n; i++){
-                nhanvien *x = new nhanvien();
+                NhanSu *x = new NhanSu();
                 x->DocFile(filein);
                 ds[i] = x;
             }
@@ -64,7 +64,7 @@ void Menu(nhanvien *ds[], int &n){
 }
 
 int main(){
-    nhanvien *ds[10000];
+    NhanSu *ds[10000];
     int n = 0;
     Menu(ds, n);
 }
