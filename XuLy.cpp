@@ -32,6 +32,7 @@ void Menu(NhanSu *ds[], int &n){
             cout << "\n\t\t\t\tDa Doc Thong Tin Nhan Vien !\n";
         }
         else if(luachon == 2){
+            cout << "\n\t\t\t\t\tDANH SACH NHAN VIEN" << endl;
             for(int i=0;i<n;i++){
                 cout << "\n\t\t\t\t" <<i+1<<".  NHAN VIEN THU " << i+1 << endl;
                 ds[i]->Xuat();
