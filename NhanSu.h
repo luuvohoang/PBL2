@@ -31,6 +31,7 @@ class date{
 
 class NhanSu{
     protected:
+        
         string maNV;
         string hoTen;
         date namSinh;
@@ -43,6 +44,10 @@ class NhanSu{
         double thucLinh;
         date ngayVaoLam;
     public:
+        static int countnv;
         virtual void DocFile(ifstream &);
-        virtual void Xuat(); 
+        virtual void Nhap();
+        virtual void Xuat();
+        virtual void XuatFile(ofstream &); 
+        void TimKiem();
 };

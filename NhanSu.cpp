@@ -2,7 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include <string> 
+#include <iomanip>
 using namespace std;
+
+int NhanSu::countnv = 0;
 
 void NhanSu :: DocFile(ifstream &filein){
     char a;
@@ -42,6 +45,64 @@ void NhanSu :: DocFile(ifstream &filein){
     filein >> nam1;
     ngayVaoLam.setNam(nam1);
 }   
+void NhanSu :: Nhap(){
+    cout << "\n\t\t\t\t Ma Nhan Vien: ";
+    cin >> maNV;
+    cout << "\t\t\t\t Ten Nhan Vien: ";
+    // char ten[50];
+    string ten;
+    getline(cin, ten);
+    getline(cin, ten);
+    hoTen = ten;
+    cout << "\t\t\t\t Ngay sinh: ";
+    string ntns;
+    cin >> ntns;
+    int flags = 1;
+    int hold = 0;
+    for(int i=0;i<ntns.length();i++){
+        if(ntns[i]!='/'){
+            hold*=10, hold+=ntns[i]-48;
+        }
+        else {
+            if(flags == 1){
+                namSinh.setNgay(hold);
+            }
+            else if(flags == 2){
+                namSinh.setThang(hold);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    namSinh.setNam(hold);
+    cout << "\t\t\t\t Gioi Tinh: ";
+    string gt;
+    gioiTinh+=" ";
+    cin >> gt;
+    gioiTinh+=gt;
+    cout << "\t\t\t\t Ngay vao lam: ";
+    string nvl;
+    cin >> nvl;
+    flags = 1;
+    hold = 0;
+    for(int i=0;i<nvl.length();i++){
+        if(nvl[i]!='/'){
+            hold*=10, hold+=nvl[i]-48;
+        }
+        else {
+            if(flags == 1){
+                ngayVaoLam.setNgay(hold);
+            }
+            else if(flags == 2){
+                ngayVaoLam.setThang(hold);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    ngayVaoLam.setNam(hold);
+    cout << "\n\t\t\t\t Thanh cong them nhan vien !\n";
+}
 void NhanSu :: Xuat(){
     cout <<"\n\t\t\t\t Ma: " << maNV;
     cout <<"\n\t\t\t\t Ho ten: " << hoTen;
@@ -49,8 +110,9 @@ void NhanSu :: Xuat(){
     cout << "\n\t\t\t\t Gioi Tinh:" << gioiTinh;
     char a = maNV[1];
     string s;
-    if(a == '1') s = "Ha Noi";
-    else s = "Da Nang";
+    if(a == '1') s = "Ke Toan";
+    else if(a == '2') s = "Nhan Su";
+    else s = "Ki Thuat";
     cout << "\n\t\t\t\t Don vi: " << s;
     a = maNV[3];
     if(a == '1') s = "Giam Doc";
@@ -60,4 +122,45 @@ void NhanSu :: Xuat(){
     else s = "Nhan Vien";
     cout << "\n\t\t\t\t Chuc vu: " <<  s;
     cout << "\n\t\t\t\t Ngay vao lam: " << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
+}
+void NhanSu :: XuatFile(ofstream &fileout){
+    fileout <<" "<<maNV;
+    fileout <<"\t\t" << hoTen;
+    if(hoTen.length() < 20) {
+        int l = hoTen.length();
+        while(l < 20){
+            fileout << " ";
+            l++;
+        }
+    }
+    fileout << "\t" << namSinh.getNgay() <<"/" << namSinh.getThang() <<"/" << namSinh.getNam();
+    fileout << "\t" << gioiTinh << "  ";
+    if(gioiTinh[0] == 'N'&&gioiTinh[1]=='u') {
+        int l = 2;
+        while(l < 8){
+            fileout << " ";
+            l++;
+        }
+    }
+    char a = maNV[1];
+    string s;
+    if(a == '1') s = "Ke Toan";
+    else if(a == '2') s = "Nhan Su";
+    else s = "Ki Thuat";
+    fileout  << "\t\t " << s;
+    a = maNV[3];
+    if(a == '1') s = "Giam Doc";
+    else if(a == '2') s = "Pho Giam Doc";
+    else if(a == '3') s = "Truong Phong";
+    else if(a == '4') s = "Pho Phong";
+    else s = "Nhan Vien";
+    fileout  << "\t" <<  s;
+    if(s.length() < 12) {
+        int l = s.length();
+        while(l < 12){
+            fileout <<  " ";
+            l++;
+        }
+    }
+    fileout << "\t" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
 }
