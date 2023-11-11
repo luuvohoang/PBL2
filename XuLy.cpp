@@ -15,12 +15,12 @@ void Menu(NhanSu *ds[], int &n){
         cout << "\n\t\t\t\t 1. Nhap thong tin nhan vien"; // xong
         cout << "\n\t\t\t\t 2. Xuat thong tin nhan vien"; // xong
         cout << "\n\t\t\t\t 3. In bang thong ke theo don vi";                              
-        cout << "\n\t\t\t\t 4. Them nhan vien";  // xong
-        cout << "\n\t\t\t\t 5. Tim kiem nhan vien"; 
+        cout << "\n\t\t\t\t 4. Them nhan vien";  // xong    
+        cout << "\n\t\t\t\t 5. Tim kiem nhan vien"; // thien anh
         cout << "\n\t\t\t\t 6. Sap xep";
         cout << "\n\t\t\t\t 7. Chen nhan vien"; // xong
         cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien"; 
-        cout << "\n\t\t\t\t 9. Xoa nhan vien";
+        cout << "\n\t\t\t\t 9. Xoa nhan vien"; // thien anh
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
 
@@ -123,7 +123,9 @@ void Menu(NhanSu *ds[], int &n){
         }
         // xuat ra file
         else if(luachon == 3){
-
+            ofstream fileThongKe;
+            fileThongKe.open("BangThongKe.txt", ios_base::out);
+            fileThongKe << "Don Vi \t So Nhan Vien \t %Nam \t %Nu \t Tong Thuc Linh\n";
             // bao gồm:
             // - theo đơn vị
             // +thông tin cá nhân
@@ -131,7 +133,7 @@ void Menu(NhanSu *ds[], int &n){
             // +bảng thống kê
         }
         else if(luachon == 4){
-            
+
         }
         else {
             break;

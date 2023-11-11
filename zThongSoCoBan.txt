@@ -26,6 +26,12 @@ Lương = hệ số lương * lương cơ bản.
 ngày bắt đầu làm
 thâm niên
 file thông tin 
+rằng buộc
++ số lượng nhân viên tối đa
++ mã trùng
++ thêm file (donvi, chucvu)
+. mã dvi| ten dvi| so nv hien tai| so nv tối đa
+. mã chức vụ| tên chức vị | số chức vụ hiện tại| số chức vụ tối đa
 
 
 

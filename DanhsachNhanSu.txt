@@ -1,5 +1,5 @@
 DVi	 Ma Nhan Vien	Ho va Ten				Nam Sinh 	 Gioi Tinh 	 Don Vi 	Chuc Vu 		Ngay Vao Lam 
-1	 12341233		gdgdfghfdn          	5/5/5555	 Nam  		 Nhan Su	Pho Phong   	5/5/5555
+1	 10222027		Luu Vo Ho…ng        	7/8/2004	 Nam  		 Ki Thuat	Pho Giam Doc	7/8/2026
 2	 01010001		Nguyen Dinh Chuong  	4/1/1971	 Nam  		 Ke Toan	Giam Doc    	5/2/1991
 3	 01020002		Le Quang Doan       	7/12/1970	 Nam  		 Ke Toan	Pho Giam Doc	5/9/1997
 4	 01030034		Do Ngoc Khai        	12/8/1981	 Nam  		 Ke Toan	Truong Phong	1/12/2005
