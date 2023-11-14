@@ -1,0 +1,4 @@
+Don Vi 		 So Nhan Vien 	 %Nam 		 %Nu 		 Tong Thuc Linh
+Ky Thuat		 1			0				100			15408000
+Ke Toan		 12			33.3333				66.6667			101988000
+Nhan Su		 9			33.3333				66.6667			91260000

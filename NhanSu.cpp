@@ -1,18 +1,26 @@
 #include "NhanSu.h"
-#include <iostream>
 #include<bits/stdc++.h>
-
-#include <algorithm>
-#include <cctype>
-#include <fstream>
-#include<string>
-#include <string.h>
-#include <stringapiset.h>
-#include <cstring> 
-#include <iomanip>
 using namespace std;
 
 int NhanSu::countnv = 0;
+
+void NhanSu :: TinhLuong(){
+    if(this->getMaCV() == "01"){
+        ThucLinh += LuongCoBan * HSLuongGiamDoc;
+    }
+    if(this->getMaCV() == "02"){
+        ThucLinh += LuongCoBan * HSLuongPhoGiamDoc;
+    }
+    if(this->getMaCV() == "03"){
+        ThucLinh += LuongCoBan * HSLuongTruongPhong;
+    }
+    if(this->getMaCV() == "04"){
+        ThucLinh += LuongCoBan * HSLuongPhoPhong;
+    }
+    if(this->getMaCV() == "05"){
+        ThucLinh += LuongCoBan * HSLuongNhanVien;
+    }
+}
 
 void NhanSu :: DocFile(ifstream &filein){
     char a;
@@ -52,6 +60,7 @@ void NhanSu :: DocFile(ifstream &filein){
     filein >> nam1;
     ngayVaoLam.setNam(nam1);
 }   
+
 void NhanSu :: Nhap(){
     cout << "\n\t\t\t\t Ma Nhan Vien: ";
     cin >> maNV;
@@ -131,8 +140,8 @@ void NhanSu :: Xuat(){
     cout << "\n\t\t\t\t Ngay vao lam: " << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
 }
 void NhanSu :: XuatFile(ofstream &fileout){
-    fileout <<" "<<maNV;
-    fileout <<"\t\t" << hoTen;
+    fileout <<" |"<<maNV;
+    fileout <<"\t\t|" << hoTen;
     if(hoTen.length() < 20) {
         int l = hoTen.length();
         while(l < 20){
@@ -140,8 +149,8 @@ void NhanSu :: XuatFile(ofstream &fileout){
             l++;
         }
     }
-    fileout << "\t" << namSinh.getNgay() <<"/" << namSinh.getThang() <<"/" << namSinh.getNam();
-    fileout << "\t" << gioiTinh << "  ";
+    fileout << "\t|" << namSinh.getNgay() <<"/" << namSinh.getThang() <<"/" << namSinh.getNam();
+    fileout << "\t|" << gioiTinh << "  ";
     if(gioiTinh[0] == 'N'&&gioiTinh[1]=='u') {
         int l = 2;
         while(l < 8){
@@ -154,14 +163,14 @@ void NhanSu :: XuatFile(ofstream &fileout){
     if(a == '1') s = "Ke Toan";
     else if(a == '2') s = "Nhan Su";
     else s = "Ki Thuat";
-    fileout  << "\t\t " << s;
+    fileout  << "\t\t |" << s;
     a = maNV[3];
     if(a == '1') s = "Giam Doc";
     else if(a == '2') s = "Pho Giam Doc";
     else if(a == '3') s = "Truong Phong";
     else if(a == '4') s = "Pho Phong";
     else s = "Nhan Vien";
-    fileout  << "\t" <<  s;
+    fileout  << "\t|" <<  s;
     if(s.length() < 12) {
         int l = s.length();
         while(l < 12){
@@ -169,7 +178,7 @@ void NhanSu :: XuatFile(ofstream &fileout){
             l++;
         }
     }
-    fileout << "\t" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
+    fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
 }
 void NhanSu::TimKiem(NhanSu *ds)
 {
