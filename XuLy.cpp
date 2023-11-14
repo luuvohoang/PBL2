@@ -1,6 +1,7 @@
 #include<iostream>
 #include <fstream>
 #include "NhanSu.h"
+#include <cstring> 
 #include <string>
 using namespace std;
 
@@ -9,85 +10,78 @@ void Menu(NhanSu *ds[], int &n){
     ifstream filein;
     ofstream fileout;
     
+    filein.open("NhanSu.txt", ios_base::in);
+    filein >> n;
+    // nhanvien *x = NULL; 
+    for(int i = 0; i < n; i++){
+        NhanSu *x = new NhanSu();
+        x->DocFile(filein);
+        ds[i] = x;
+        NhanSu::countnv++;
+    }
+
+    filein.close();
 
     while (true){
         cout << "\n\n\t\t\t\t================ MENU  ==============\n";
         cout << "\n\t\t\t\t 1. Nhap thong tin nhan vien"; // xong
         cout << "\n\t\t\t\t 2. Xuat thong tin nhan vien"; // xong
         cout << "\n\t\t\t\t 3. In bang thong ke theo don vi";                              
-        cout << "\n\t\t\t\t 4. Them nhan vien";  // xong    
-        cout << "\n\t\t\t\t 5. Tim kiem nhan vien"; // thien anh
+        cout << "\n\t\t\t\t 4. Them nhan vien";  // xong
+        cout << "\n\t\t\t\t 5. Tim kiem nhan vien"; //TA
         cout << "\n\t\t\t\t 6. Sap xep";
         cout << "\n\t\t\t\t 7. Chen nhan vien"; // xong
         cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien"; 
-        cout << "\n\t\t\t\t 9. Xoa nhan vien"; // thien anh
+        cout << "\n\t\t\t\t 9. Xoa nhan vien";//TA
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
 
+      
+        
         int luachon;
         cout << "\n\n\t\t\t\t Nhap lua chon: ";
         cin >> luachon;
         
+        
+
         if(luachon == 1){
-            int luachonnhap;
-            cout << "\n\t\t\t\t Chon che do nhap: ";
-            cout << "\n\t\t\t\t 1. Nhap bang file";
-            cout << "\n\t\t\t\t 2. Nhap thu cong";
+            NhanSu *x = new NhanSu();
+            x->Nhap();
+            cout << "\n\t\t\t\t Them Vao:";
+            cout << "\n\t\t\t\t 1. Them Vao Dau";
+            cout << "\n\t\t\t\t 2. Them Vao Cuoi";
+            cout << "\n\t\t\t\t 3. Them Noi Chi Dinh";
+            int choose;
             cout << "\n\t\t\t\t Nhap lua chon: ";
-            cin >> luachonnhap;
-            if(luachonnhap == 1){
-                filein.open("NhanSu.txt", ios_base::in);
-                filein >> n;
-                // nhanvien *x = NULL; 
-                for(int i = 0; i < n; i++){
-                    NhanSu *x = new NhanSu();
-                    x->DocFile(filein);
-                    ds[i] = x;
-                    NhanSu::countnv++;
-                }
-                cout << "\n\t\t\t\tDa Doc Thong Tin Nhan Vien !\n";
-                filein.close();
-            }
-            else{
+            cin >> choose;
+            if(choose == 1){
 
-                NhanSu *x = new NhanSu();
-                x->Nhap();
-                cout << "\n\t\t\t\t Them Vao:";
-                cout << "\n\t\t\t\t 1. Them Vao Dau";
-                cout << "\n\t\t\t\t 2. Them Vao Cuoi";
-                cout << "\n\t\t\t\t 3. Them Noi Chi Dinh";
-                int choose;
-                cout << "\n\t\t\t\t Nhap lua chon: ";
-                cin >> choose;
-                if(choose == 1){
-
-                    for(int i = NhanSu::countnv-1;i>=0;i--){
-                        ds[i+1] = ds[i];
-                    }
-                    ds[0] = x;
-                    NhanSu::countnv++;
+                for(int i = NhanSu::countnv-1;i>=0;i--){
+                    ds[i+1] = ds[i];
                 }
-                else if(choose == 2){
-                    ds[NhanSu::countnv] = x;
-                    NhanSu::countnv++;
-                }
-                else {
-                    cout << "\n\t\t\t\t Moi Nhap Vi Tri muon them: ";
-                    int pos;
-                    cin >> pos;
-                    pos --;
-                    if(pos > NhanSu::countnv){
-                        pos = NhanSu::countnv;
-                    }
-                    else if(pos < 0) pos = 0;
-                    for(int i = NhanSu::countnv-1;i>pos;i--){
-                        ds[i+1] = ds[i];
-                    }
-                    ds[pos] = x;
-                    NhanSu::countnv++;
-                }
-                cout << "\n\t\t\t\t Da Doc Thong Tin Nhan Vien !\n";
+                ds[0] = x;
+                NhanSu::countnv++;
             }
+            else if(choose == 2){
+                ds[NhanSu::countnv] = x;
+                NhanSu::countnv++;
+            }
+            else {
+                cout << "\n\t\t\t\t Moi Nhap Vi Tri muon them: ";
+                int pos;
+                cin >> pos;
+                pos --;
+                if(pos > NhanSu::countnv){
+                    pos = NhanSu::countnv;
+                }
+                else if(pos < 0) pos = 0;
+                for(int i = NhanSu::countnv-1;i>pos;i--){
+                    ds[i+1] = ds[i];
+                }
+                ds[pos] = x;
+                NhanSu::countnv++;
+            }
+            cout << "\n\t\t\t\t Da Doc Thong Tin Nhan Vien !\n";
             
         }
         // xuat ra man hinh hoac file
@@ -135,6 +129,23 @@ void Menu(NhanSu *ds[], int &n){
         else if(luachon == 4){
 
         }
+        else if(luachon == 5){
+            // NhanSu s;
+            // for(int i=0; i<NhanSu::countnv; i++)
+            // {
+                // s.TimKiem(*ds);
+        
+            // } 
+            for(int i =0; i<NhanSu::countnv; i++)
+            {
+
+            ds[i]->Xuat();
+            }
+           
+
+
+        }
+
         else {
             break;
         }
@@ -142,7 +153,6 @@ void Menu(NhanSu *ds[], int &n){
     }
     filein.close();
 }
-
 int main(){
     NhanSu *ds[10000];
     int n = 0;

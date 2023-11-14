@@ -1,7 +1,14 @@
 #include "NhanSu.h"
 #include <iostream>
+#include<bits/stdc++.h>
+
+#include <algorithm>
+#include <cctype>
 #include <fstream>
-#include <string> 
+#include<string>
+#include <string.h>
+#include <stringapiset.h>
+#include <cstring> 
 #include <iomanip>
 using namespace std;
 
@@ -163,4 +170,69 @@ void NhanSu :: XuatFile(ofstream &fileout){
         }
     }
     fileout << "\t" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
+}
+void NhanSu::TimKiem(NhanSu *ds)
+{
+    int e=0, pt;
+    string a;
+   char op = tolower('A');
+    cout<<"\nChon phuong thuc tim kiem:\n1. Tim kiem theo ten\n2. Tim kiem theo ma nhan vien\n3. Tim kiem theo don vi\n";
+        cin>>pt;
+        cout<<ds[1].maNV<<endl;
+    // if(pt==1)
+    // {
+    //      cout<<"Nhap ten nhan vien can tim: "<<endl;
+    //         cin>>a;
+    //         for(int i = 0; i<NhanSu::countnv; i++)
+    //     {
+    //         if(tolower(a)==tolower(ds[i].hoTen))
+    //         {
+    //             e=1;
+    //             ds[i].Xuat();
+    //             cout<<endl;
+    //         }
+    //         else if((ds[i].hoTen).find(a)!= std::string::npos)
+    //         {
+    //              e=1;
+    //             ds[i].Xuat();
+    //             cout<<endl;
+    //         }
+    //         else e=0;
+          
+    //     }
+
+    // }
+        // if(pt==2)
+        // {
+             
+        //     cout<<"Nhap ma nhan vien can tim: "<<endl;
+        //     cin>>a;
+        //     for(int i = 0; i<NhanSu::countnv; i++)
+        // {
+        //     if(a.compare(ds[i].maNV)==0)
+        //     {
+        //         e=1;
+        //         ds[i].Xuat();
+        //         cout<<endl;
+        //     }
+        //     else if((ds[i].maNV).find(a)!= std::string::npos)
+        //     {
+        //          e=1;
+        //         ds[i].Xuat();
+        //         cout<<endl;
+        //     }
+        //     else e=0;
+          
+        // }
+
+       
+        // }
+        //  if(e==0) 
+        // {
+        //     cout<<"Khong co nhan vien"<<endl;
+        //     e=1;
+        // }
+        
+
+     
 }

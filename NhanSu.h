@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include <cstring> 
 using namespace std;
 
 class date{
@@ -49,5 +50,7 @@ class NhanSu{
         virtual void Nhap();
         virtual void Xuat();
         virtual void XuatFile(ofstream &); 
-        void TimKiem();
+        virtual void TimKiem(NhanSu *);
+        
+         int& operator[]( int&);
 };
