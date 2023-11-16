@@ -9,6 +9,15 @@ class date
         int thang;
         int nam;
     public:
+        const date& operator=(const date& d){
+            if(this != &d)
+            {
+                this->ngay = d.ngay;
+                this->thang = d.thang;
+                this->nam = d.nam;
+            }
+            return *this;
+        }
         int getNgay(){
             return ngay;
         }
@@ -56,17 +65,26 @@ class NhanSu
         double HSLuongNhanVien = 3.63;
     public:
         static int countnv;
+        
         virtual void DocFile(ifstream &);
-        virtual void Nhap();
+        virtual void Nhap(string);
         virtual void Xuat();
         virtual void XuatFile(ofstream &); 
         virtual void TimKiem(NhanSu*);
+        virtual void TimKiemNS(string);
         virtual void TinhLuong();
+        const NhanSu& operator=(const NhanSu&);
         string getMaDV(){
             string x;
             x += maNV[0];
             x += maNV[1];
             return x;
+        }
+        string getHoTen(){
+            return hoTen;
+        }
+        string getMaNV(){
+            return maNV;
         }
         string getMaCV(){
             string x;
@@ -74,6 +92,7 @@ class NhanSu
             x += maNV[3];
             return x;
         }
+        
         string getGT(){
             return gioiTinh;
         }

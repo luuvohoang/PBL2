@@ -1,7 +1,8 @@
 #include "NhanSu.h"
 #include<bits/stdc++.h>
+#include <fstream>
 using namespace std;
-
+//      g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o aa
 int NhanSu::countnv = 0;
 
 void NhanSu :: TinhLuong(){
@@ -61,9 +62,10 @@ void NhanSu :: DocFile(ifstream &filein){
     ngayVaoLam.setNam(nam1);
 }   
 
-void NhanSu :: Nhap(){
-    cout << "\n\t\t\t\t Ma Nhan Vien: ";
-    cin >> maNV;
+void NhanSu :: Nhap(string s){
+    int flag = 1;
+    maNV = s;
+    // cin >> maNV;
     cout << "\t\t\t\t Ten Nhan Vien: ";
     // char ten[50];
     string ten;
@@ -95,6 +97,7 @@ void NhanSu :: Nhap(){
     string gt;
     gioiTinh+=" ";
     cin >> gt;
+    gt[0] = toupper(gt[0]);
     gioiTinh+=gt;
     cout << "\t\t\t\t Ngay vao lam: ";
     string nvl;
@@ -180,11 +183,39 @@ void NhanSu :: XuatFile(ofstream &fileout){
     }
     fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
 }
+
+void NhanSu::TimKiemNS(string s){
+    int flag = 1;
+    ifstream filein;
+    ofstream fileout;
+    string ss = this->hoTen;
+    cout << "/"<<ss<<"/" << endl;
+    for(int i=0;i<ss.length();i++){
+        ss[i] = tolower(ss[i]);
+    }
+    cout << "/"<<ss<<"/" << endl;
+    for(int j =  0 ;j < ss.length()-s.length();j++){
+        for(int i=0;i<s.length();i++){
+            if(s[i] != ss[i+j]){
+                // cout << s[i] << " " << ss[i] << endl;
+                flag = 0;
+                break;
+            }
+        }
+    }
+    if(flag == 1){
+        fileout.open("TimKiemNhanVien.txt", ios_base::out);
+        // fileout << "DVi\t |Ma Nhan Vien\t|Ho va Ten\t\t\t\t|Nam Sinh \t| Gioi Tinh \t |Don Vi \t|Chuc Vu \t\t|Ngay Vao Lam \n";
+        this->XuatFile(fileout);
+        // cout << "\n\t\t\t\t Da xuat du lieu ra file DanhsachNhanSu.txt !\n";
+        fileout.close();  
+    }
+}
 void NhanSu::TimKiem(NhanSu *ds)
 {
     int e=0, pt;
     string a;
-   char op = tolower('A');
+    char op = tolower('A');
     cout<<"\nChon phuong thuc tim kiem:\n1. Tim kiem theo ten\n2. Tim kiem theo ma nhan vien\n3. Tim kiem theo don vi\n";
         cin>>pt;
         cout<<ds[1].maNV<<endl;
@@ -244,4 +275,22 @@ void NhanSu::TimKiem(NhanSu *ds)
         
 
      
+}
+
+const NhanSu& NhanSu::operator=(const NhanSu& p){
+    if(this != &p){
+        // cout << "=" <<endl;
+        this->maNV = p.maNV;
+        this->hoTen = p.hoTen;
+        this->namSinh = p.namSinh;
+        this->gioiTinh = p.gioiTinh;
+        this->donVi = p.donVi;
+        this->chucVu = p.chucVu;
+        this->heSo = p.heSo;
+        this->luong = p.luong;
+        this->phuCap = p.phuCap;
+        this->ngayVaoLam = p.ngayVaoLam;
+        this->ThucLinh = p.ThucLinh;
+    }
+    return *this;
 }

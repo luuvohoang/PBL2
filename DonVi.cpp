@@ -7,7 +7,7 @@ void DonVi::NhapDV(NhanSu *a){
     if(MaDV == "01") this->TenDV += "Ke Toan";
     if(MaDV == "02") this->TenDV += "Nhan Su";
     if(MaDV == "03") this->TenDV += "Ky Thuat";
-    if(a->getGT().length() < 4)this->TiLeNam ++;
+    if(a->getGT().length() > 3)this->TiLeNam ++;
     else this->TiLeNu ++;
     this->ThucLinh += a->getLuong();
     // cout << a->getMaDV() <<"3 " <<this->TenDV << endl;
@@ -25,7 +25,7 @@ bool DonVi::check( NhanSu* b){
 }
 void DonVi:: CapNhat(NhanSu* a){
     this->SL_NV++;
-    if(a->getGT().length() < 4)this->TiLeNam ++;
+    if(a->getGT().length() > 3)this->TiLeNam ++;
     else this->TiLeNu ++;
     this->ThucLinh += a->getLuong();
 }
