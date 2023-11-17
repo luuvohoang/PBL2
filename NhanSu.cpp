@@ -64,6 +64,7 @@ void NhanSu :: DocFile(ifstream &filein){
 
 void NhanSu :: Nhap(string s){
     int flag = 1;
+    int d, m ,y;
     maNV = s;
     // cin >> maNV;
     cout << "\t\t\t\t Ten Nhan Vien: ";
@@ -77,28 +78,59 @@ void NhanSu :: Nhap(string s){
     cin >> ntns;
     int flags = 1;
     int hold = 0;
+    do{
+        if(d>31||d<1||m<=0||m>12||y<=1950||y>=2000)
+        cout<<"\t\t\t\tNgay thang nam khong hop le\n\t\t\t\tNhap lai!"<<endl;
+      
+     cout << "\t\t\t\t Ngay sinh: ";
+    cin >> ntns;
+     flags = 1;
+     hold = 0;
     for(int i=0;i<ntns.length();i++){
         if(ntns[i]!='/'){
             hold*=10, hold+=ntns[i]-48;
         }
         else {
             if(flags == 1){
+                d=hold;
                 namSinh.setNgay(hold);
             }
             else if(flags == 2){
+                m=hold;
                 namSinh.setThang(hold);
             }
             hold = 0;
             flags++;
         }
     }
+    y=hold;
     namSinh.setNam(hold);
+    }while(d>31||d<1||m<=0||m>12||y>=2000||y<=1950);
+
     cout << "\t\t\t\t Gioi Tinh: ";
     string gt;
-    gioiTinh+=" ";
     cin >> gt;
     gt[0] = toupper(gt[0]);
+   for(int i=1; i<gt.length(); i++)
+    {
+      gt[i]=tolower(gt[i]);
+      
+    }
+     gioiTinh+=gt;
+do{
+   cout<<"\t\t\t\tGioi tinh khong dung\n\t\t\t\tNhap lai!"<<endl;
+     cin >> gt;
+    gioiTinh+=" ";
+    gt[0] = toupper(gt[0]);
+     
+   for(int i=1; i<gt.length(); i++)
+    {
+      gt[i]=tolower(gt[i]);
+    }
     gioiTinh+=gt;
+
+}while(gioiTinh!=" Nam"&&gioiTinh!=" Nu");
+
     cout << "\t\t\t\t Ngay vao lam: ";
     string nvl;
     cin >> nvl;

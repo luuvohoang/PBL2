@@ -1,1 +1,20 @@
-Khong tim thay nhan vien nao !
+ |01010002		|A                   	|28/11/2004	| Nam  		 |Ke Toan	|Giam Doc    	|31/12/2023
+ |01020002		|Le Quang Doan       	|7/12/1970	| Nam  		 |Ke Toan	|Pho Giam Doc	|5/9/1997
+ |01030034		|Do Ngoc Khai        	|12/8/1981	| Nam  		 |Ke Toan	|Truong Phong	|1/12/2005
+ |01030043		|Phan Binh Kiet      	|11/3/1981	| Nam  		 |Ke Toan	|Truong Phong	|4/2/2008
+ |01040086		|Luong Nguyen Nhat Linh	|22/12/1985	| Nu  		 |Ke Toan	|Pho Phong   	|4/12/2009
+ |01040092		|Ho Hai Luan         	|19/7/1995	| Nam  		 |Ke Toan	|Pho Phong   	|6/4/2021
+ |01050532		|Truong Thi Ha My    	|30/3/1986	| Nu  		 |Ke Toan	|Nhan Vien   	|3/1/2012
+ |01050362		|Doan Thi Kieu Na    	|29/3/1987	| Nu  		 |Ke Toan	|Nhan Vien   	|5/11/2015
+ |01050473		|Phan Tri Nguyen     	|6/6/1988	| Nam  		 |Ke Toan	|Nhan Vien   	|2/8/2014
+ |01050375		|Le Phuoc Anh Phi    	|29/1/1979	| Nam  		 |Ke Toan	|Nhan Vien   	|8/11/2007
+ |01050643		|Nguyen Trong Dat    	|21/9/1961	| Nam  		 |Ke Toan	|Nhan Vien   	|2/4/1990
+ |01050642		|Do Hong Anh         	|8/4/1962	| Nu  		 |Ke Toan	|Nhan Vien   	|5/7/1992
+ |02010004		|Nguyen Van Anh      	|16/8/1986	| Nu  		 |Nhan Su	|Giam Doc    	|1/11/2016
+ |02020005		|Truong Dinh Quang   	|2/1/1984	| Nam  		 |Nhan Su	|Pho Giam Doc	|4/5/2015
+ |02030034		|Pham Phu Quy        	|26/9/1986	| Nam  		 |Nhan Su	|Truong Phong	|6/2/2017
+ |02030032		|Truong Huu Phuoc Tai	|18/2/1987	| Nam  		 |Nhan Su	|Truong Phong	|9/8/2017
+ |02040085		|Nguyen Hoang Thien  	|4/6/1987	| Nam  		 |Nhan Su	|Pho Phong   	|3/11/2013
+ |02040025		|Bui Van Thong       	|27/11/1987	| Nam  		 |Nhan Su	|Pho Phong   	|0/3/2013
+ |02050483		|Huynh Ba Thuan      	|8/7/1996	| Nam  		 |Nhan Su	|Nhan Vien   	|7/2/2022
+ |02050375		|Nguyen Thi Quynh Tram	|3/8/1973	| Nu  		 |Nhan Su	|Nhan Vien   	|4/6/2000
