@@ -110,26 +110,36 @@ void NhanSu :: Nhap(string s){
     cout << "\t\t\t\t Gioi Tinh: ";
     string gt;
     cin >> gt;
+    for(int i=0;i<gt.length();i++){
+        gt[i] = tolower(gt[i]);
+    }
+    while(gt != "nam" && gt != "nu"){
+        cin >> gt;
+        for(int i=0;i<gt.length();i++){
+            gt[i] = tolower(gt[i]);
+        }
+    }
     gt[0] = toupper(gt[0]);
-   for(int i=1; i<gt.length(); i++)
-    {
-      gt[i]=tolower(gt[i]);
+    // for(int i=1; i<gt.length(); i++)
+    // {
+    //   gt[i]=tolower(gt[i]);
       
-    }
-     gioiTinh+=gt;
-do{
-   cout<<"\t\t\t\tGioi tinh khong dung\n\t\t\t\tNhap lai!"<<endl;
-     cin >> gt;
-    gioiTinh+=" ";
-    gt[0] = toupper(gt[0]);
-     
-   for(int i=1; i<gt.length(); i++)
-    {
-      gt[i]=tolower(gt[i]);
-    }
+    // }
+    gioiTinh += " ";
     gioiTinh+=gt;
+// do{
+//    cout<<"\t\t\t\tGioi tinh khong dung\n\t\t\t\tNhap lai!"<<endl;
+//      cin >> gt;
+//     gioiTinh+=" ";
+//     gt[0] = toupper(gt[0]);
+     
+//    for(int i=1; i<gt.length(); i++)
+//     {
+//       gt[i]=tolower(gt[i]);
+//     }
+//     gioiTinh+=gt;
 
-}while(gioiTinh!=" Nam"&&gioiTinh!=" Nu");
+// }while(gioiTinh!=" Nam"||gioiTinh!=" Nu");
 
     cout << "\t\t\t\t Ngay vao lam: ";
     string nvl;

@@ -1,5 +1,5 @@
 DVi		|Ma CVu	 |Ten Chuc Vu				|So luong toi da 
-1	 |01		|Giam Doc            	|2  	|20  
+1	 |01		|Giam Doc            	|4  	|20  
 2	 |02		|Pho Giam Doc        	|2  	|20  
 3	 |03		|Truong Phong        	|4  	|20  
 4	 |04		|Pho Phong           	|4  	|20  

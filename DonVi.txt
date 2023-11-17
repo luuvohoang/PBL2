@@ -1,3 +1,3 @@
 DVi	|Ma DVi	 |Ten Don Vi	|So luong Nhan Vien				|So luong toi da 
-1	 |01		|Ke Toan	|12  	|20  
+1	 |01		|Ke Toan	|14  	|20  
 2	 |02		|Nhan Su	|8  	|20  
