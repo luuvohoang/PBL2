@@ -11,7 +11,7 @@
 01050375, Le Phuoc Anh Phi, 29/01/1979, Nam, 28/11/2007
 01050643, Nguyen Trong Dat, 21/09/1961, Nam, 12/04/1990
 01050642, Do Hong Anh, 08/04/1962, Nu, 05/07/1992
-02010004, Nguyen Van Anh, 16/08/1986, Nu, 11/11/2016
+01010004, Nguyen Van Anh, 16/08/1986, Nu, 11/11/2016
 02020005, Truong Dinh Quang, 02/01/1984, Nam, 14/05/2015 
 02030034, Pham Phu Quy, 26/09/1986, Nam, 26/02/2017
 02030032, Truong Huu Phuoc Tai, 18/02/1987, Nam, 19/08/2017

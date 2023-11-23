@@ -98,7 +98,7 @@ void Xuat(){
     //cap nhat file BangThongKe
     ofstream fileThongKe;
     fileThongKe.open("BangThongKe.txt", ios_base::out);
-    fileThongKe << "Don Vi \t\t So Nhan Vien \t %Nam \t\t %Nu \t\t Tong Thuc Linh\n";
+    fileThongKe << "Don Vi \t\t So Nhan Vien \t%Nam \t\t\t    %Nu \t\t\t    Tong Thuc Linh\n";
     for(int i = 0; i< DonVi::countDV;i++){
         dsDV[i]->XuatBangThongKe(fileThongKe);
     }
@@ -143,8 +143,7 @@ void Menu(NhanSu *ds[], int &n){
         int luachon;
         cout << "\n\n\t\t\t\t Nhap lua chon: ";
         cin >> luachon;
-        
-        
+        // vector<NhanSu> a;
         if(luachon == 1){
             NhanSu *x = new NhanSu();
             int flag = 1;

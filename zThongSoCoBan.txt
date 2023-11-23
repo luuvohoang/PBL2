@@ -35,6 +35,12 @@ rằng buộc
 . mã chức vụ| tên chức vị | số chức vụ hiện tại| số chức vụ tối đa
 
 
+Note 23/11
++ lương của từng nhân viên
++ lương thưởng
++ sắp xếp 
++ thay đổi thông tin nhân viên
++ show bảng thống kê
 
 
 

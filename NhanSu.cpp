@@ -78,8 +78,27 @@ void NhanSu :: Nhap(string s){
     cin >> ntns;
     int flags = 1;
     int hold = 0;
-    do{
-        if(d>31||d<1||m<=0||m>12||y<=1950||y>=2000)
+    for(int i=0;i<ntns.length();i++){
+        if(ntns[i]!='/'){
+            hold*=10, hold+=ntns[i]-48;
+        }
+        else {
+            if(flags == 1){
+                d=hold;
+                namSinh.setNgay(hold);
+            }
+            else if(flags == 2){
+                m=hold;
+                namSinh.setThang(hold);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    y=hold;
+    namSinh.setNam(hold);
+    while(d>31||d<1||m<=0||m>12||y>=2023||y<=1920){
+        if(d>31||d<1||m<=0||m>12||y>=2023||y<=1920)
         cout<<"\t\t\t\tNgay thang nam khong hop le\n\t\t\t\tNhap lai!"<<endl;
       
      cout << "\t\t\t\t Ngay sinh: ";
@@ -105,7 +124,7 @@ void NhanSu :: Nhap(string s){
     }
     y=hold;
     namSinh.setNam(hold);
-    }while(d>31||d<1||m<=0||m>12||y>=2000||y<=1950);
+    }
 
     cout << "\t\t\t\t Gioi Tinh: ";
     string gt;
@@ -141,27 +160,79 @@ void NhanSu :: Nhap(string s){
 
 // }while(gioiTinh!=" Nam"||gioiTinh!=" Nu");
 
+    // cout << "\t\t\t\t Ngay vao lam: ";
+    // string nvl;
+    // cin >> nvl;
+    // flags = 1;
+    // hold = 0;
+    // for(int i=0;i<nvl.length();i++){
+    //     if(nvl[i]!='/'){
+    //         hold*=10, hold+=nvl[i]-48;
+    //     }
+    //     else {
+    //         if(flags == 1){
+    //             ngayVaoLam.setNgay(hold);
+    //         }
+    //         else if(flags == 2){
+    //             ngayVaoLam.setThang(hold);
+    //         }
+    //         hold = 0;
+    //         flags++;
+    //     }
+    // }
+    // ngayVaoLam.setNam(hold);
     cout << "\t\t\t\t Ngay vao lam: ";
     string nvl;
     cin >> nvl;
-    flags = 1;
-    hold = 0;
+     flags = 1;
+     hold = 0;
     for(int i=0;i<nvl.length();i++){
         if(nvl[i]!='/'){
             hold*=10, hold+=nvl[i]-48;
         }
         else {
             if(flags == 1){
+                d=hold;
                 ngayVaoLam.setNgay(hold);
             }
             else if(flags == 2){
+                m=hold;
                 ngayVaoLam.setThang(hold);
             }
             hold = 0;
             flags++;
         }
     }
+    y=hold;
     ngayVaoLam.setNam(hold);
+    while(d>31||d<1||m<=0||m>12||y>=2023||y<=1920){
+        if(d>31||d<1||m<=0||m>12||y>=2023||y<=1920)
+        cout<<"\t\t\t\tNgay thang nam khong hop le\n\t\t\t\tNhap lai!"<<endl;
+      
+     cout << "\t\t\t\t Ngay vao lam: ";
+    cin >> nvl;
+     flags = 1;
+     hold = 0;
+    for(int i=0;i<nvl.length();i++){
+        if(nvl[i]!='/'){
+            hold*=10, hold+=nvl[i]-48;
+        }
+        else {
+            if(flags == 1){
+                d=hold;
+                ngayVaoLam.setNgay(hold);
+            }
+            else if(flags == 2){
+                m=hold;
+                ngayVaoLam.setThang(hold);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    y=hold;
+    ngayVaoLam.setNam(hold);
+    }
     cout << "\n\t\t\t\t Thanh cong them nhan vien !\n";
 }
 void NhanSu :: Xuat(){
