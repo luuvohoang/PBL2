@@ -130,11 +130,11 @@ void Menu(NhanSu *ds[], int &n){
         //cout << "\n\t\t\t\t 2. Xuat thong tin nhan vien"; // xong //khong can thiet
         //cout << "\n\t\t\t\t 3. In bang thong ke theo don vi"; // khong can thiet, tu dong cap nhat                    
         cout << "\n\t\t\t\t 2. Tim kiem nhan vien theo ten";  // xong
-        cout << "\n\t\t\t\t 3. Tim kiem nhan vien theo ma"; //TA
-        cout << "\n\t\t\t\t 4. Xoa nhan vien";
-        cout << "\n\t\t\t\t 5. Xoa Chuc Vu"; // xong
+        cout << "\n\t\t\t\t 3. Tim kiem nhan vien theo ma"; //xong
+        cout << "\n\t\t\t\t 4. Xoa nhan vien"; // xong
+        cout << "\n\t\t\t\t 5. Xoa Chuc Vu"; 
         cout << "\n\t\t\t\t 6. Xoa Don Vi"; 
-        cout << "\n\t\t\t\t 9. Xoa nhan vien";//TA
+        // cout << "\n\t\t\t\t 9. Xoa nhan vien";
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
 
@@ -145,7 +145,6 @@ void Menu(NhanSu *ds[], int &n){
         cin >> luachon;
         
         
-
         if(luachon == 1){
             NhanSu *x = new NhanSu();
             int flag = 1;
