@@ -64,7 +64,7 @@ void NhanSu :: DocFile(ifstream &filein){
 
 void NhanSu :: Nhap(string s){
     int flag = 1;
-    int d, m ,y;
+    int d, m ,y, y1, y2;
     maNV = s;
     // cin >> maNV;
     cout << "\t\t\t\t Ten Nhan Vien: ";
@@ -96,15 +96,15 @@ void NhanSu :: Nhap(string s){
         }
     }
     y=hold;
+    y1=hold;
     namSinh.setNam(hold);
-    while(d>31||d<1||m<=0||m>12||y>=2023||y<=1920){
-        if(d>31||d<1||m<=0||m>12||y>=2023||y<=1920)
-        cout<<"\t\t\t\tNgay thang nam khong hop le\n\t\t\t\tNhap lai!"<<endl;
-      
-     cout << "\t\t\t\t Ngay sinh: ";
+    while(d>31||d<0||m>12||m<=0||y>2000||y<=1950)
+    {
+        cout << "\t\t\t\t Nhap lai ngay thang nam sinh: ";
+    string ntns;
     cin >> ntns;
-     flags = 1;
-     hold = 0;
+    int flags = 1;
+    int hold = 0;
     for(int i=0;i<ntns.length();i++){
         if(ntns[i]!='/'){
             hold*=10, hold+=ntns[i]-48;
@@ -123,6 +123,7 @@ void NhanSu :: Nhap(string s){
         }
     }
     y=hold;
+    y1=hold;
     namSinh.setNam(hold);
     }
 
@@ -133,6 +134,7 @@ void NhanSu :: Nhap(string s){
         gt[i] = tolower(gt[i]);
     }
     while(gt != "nam" && gt != "nu"){
+        cout<<"\t\t\t\t Nhap lai gioi tinh"<<endl;
         cin >> gt;
         for(int i=0;i<gt.length();i++){
             gt[i] = tolower(gt[i]);
@@ -160,34 +162,14 @@ void NhanSu :: Nhap(string s){
 
 // }while(gioiTinh!=" Nam"||gioiTinh!=" Nu");
 
-    // cout << "\t\t\t\t Ngay vao lam: ";
-    // string nvl;
-    // cin >> nvl;
-    // flags = 1;
-    // hold = 0;
-    // for(int i=0;i<nvl.length();i++){
-    //     if(nvl[i]!='/'){
-    //         hold*=10, hold+=nvl[i]-48;
-    //     }
-    //     else {
-    //         if(flags == 1){
-    //             ngayVaoLam.setNgay(hold);
-    //         }
-    //         else if(flags == 2){
-    //             ngayVaoLam.setThang(hold);
-    //         }
-    //         hold = 0;
-    //         flags++;
-    //     }
-    // }
-    // ngayVaoLam.setNam(hold);
     cout << "\t\t\t\t Ngay vao lam: ";
     string nvl;
     cin >> nvl;
-     flags = 1;
-     hold = 0;
+    flags = 1;
+    hold = 0;
     for(int i=0;i<nvl.length();i++){
         if(nvl[i]!='/'){
+            hold;
             hold*=10, hold+=nvl[i]-48;
         }
         else {
@@ -203,16 +185,15 @@ void NhanSu :: Nhap(string s){
             flags++;
         }
     }
-    y=hold;
+    y2=hold;
     ngayVaoLam.setNam(hold);
-    while(d>31||d<1||m<=0||m>12||y>=2023||y<=1920){
-        if(d>31||d<1||m<=0||m>12||y>=2023||y<=1920)
-        cout<<"\t\t\t\tNgay thang nam khong hop le\n\t\t\t\tNhap lai!"<<endl;
-      
-     cout << "\t\t\t\t Ngay vao lam: ";
+    while(d>31||d<0||m>12||m<=0||(y2-y1)<=18||(y2-y1)>70)
+    {
+        cout<<"\t\t\t\t Nhap lai ngay, thang, nam vao lam"<<endl;
+          string nvl;
     cin >> nvl;
-     flags = 1;
-     hold = 0;
+    flags = 1;
+    hold = 0;
     for(int i=0;i<nvl.length();i++){
         if(nvl[i]!='/'){
             hold*=10, hold+=nvl[i]-48;
@@ -230,9 +211,10 @@ void NhanSu :: Nhap(string s){
             flags++;
         }
     }
-    y=hold;
+     y2=hold;
     ngayVaoLam.setNam(hold);
-    }
+}
+
     cout << "\n\t\t\t\t Thanh cong them nhan vien !\n";
 }
 void NhanSu :: Xuat(){
@@ -332,59 +314,7 @@ void NhanSu::TimKiem(NhanSu *ds)
     cout<<"\nChon phuong thuc tim kiem:\n1. Tim kiem theo ten\n2. Tim kiem theo ma nhan vien\n3. Tim kiem theo don vi\n";
         cin>>pt;
         cout<<ds[1].maNV<<endl;
-    // if(pt==1)
-    // {
-    //      cout<<"Nhap ten nhan vien can tim: "<<endl;
-    //         cin>>a;
-    //         for(int i = 0; i<NhanSu::countnv; i++)
-    //     {
-    //         if(tolower(a)==tolower(ds[i].hoTen))
-    //         {
-    //             e=1;
-    //             ds[i].Xuat();
-    //             cout<<endl;
-    //         }
-    //         else if((ds[i].hoTen).find(a)!= std::string::npos)
-    //         {
-    //              e=1;
-    //             ds[i].Xuat();
-    //             cout<<endl;
-    //         }
-    //         else e=0;
-          
-    //     }
-
-    // }
-        // if(pt==2)
-        // {
-             
-        //     cout<<"Nhap ma nhan vien can tim: "<<endl;
-        //     cin>>a;
-        //     for(int i = 0; i<NhanSu::countnv; i++)
-        // {
-        //     if(a.compare(ds[i].maNV)==0)
-        //     {
-        //         e=1;
-        //         ds[i].Xuat();
-        //         cout<<endl;
-        //     }
-        //     else if((ds[i].maNV).find(a)!= std::string::npos)
-        //     {
-        //          e=1;
-        //         ds[i].Xuat();
-        //         cout<<endl;
-        //     }
-        //     else e=0;
-          
-        // }
-
-       
-        // }
-        //  if(e==0) 
-        // {
-        //     cout<<"Khong co nhan vien"<<endl;
-        //     e=1;
-        // }
+   
         
 
      
@@ -406,4 +336,54 @@ const NhanSu& NhanSu::operator=(const NhanSu& p){
         this->ThucLinh = p.ThucLinh;
     }
     return *this;
+}
+
+void NhanSu::ChangeNVL(string s){
+    int ngaymoi, nammoi, thangmoi;
+    int flags = 1;
+    int hold = 0;
+    for(int i=0;i<s.length();i++){
+        if(s[i]!='/'){
+            hold*=10, hold+=s[i]-48;
+        }
+        else {
+            if(flags == 1){
+                ngaymoi=hold;
+                this->ngayVaoLam.setNgay(ngaymoi);
+            }
+            else if(flags == 2){
+                thangmoi=hold;
+                this->ngayVaoLam.setThang(thangmoi);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    nammoi=hold;
+    this->ngayVaoLam.setNam(nammoi);
+}
+
+void NhanSu::ChangeNTNS(string s){
+    int ngaymoi, nammoi, thangmoi;
+    int flags = 1;
+    int hold = 0;
+    for(int i=0;i<s.length();i++){
+        if(s[i]!='/'){
+            hold*=10, hold+=s[i]-48;
+        }
+        else {
+            if(flags == 1){
+                ngaymoi=hold;
+                this->namSinh.setNgay(ngaymoi);
+            }
+            else if(flags == 2){
+                thangmoi=hold;
+                this->namSinh.setThang(thangmoi);
+            }
+            hold = 0;
+            flags++;
+        }
+    }
+    nammoi=hold;
+    this->namSinh.setNam(nammoi);
 }

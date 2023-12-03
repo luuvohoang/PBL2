@@ -55,7 +55,6 @@ class NhanSu
         double luong;
         double phuCap;
         date ngayVaoLam;
-
         long double ThucLinh = 0;
         double LuongCoBan = 1800000;
         double HSLuongGiamDoc = 8.56;
@@ -65,7 +64,6 @@ class NhanSu
         double HSLuongNhanVien = 3.63;
     public:
         static int countnv;
-        
         virtual void DocFile(ifstream &);
         virtual void Nhap(string);
         virtual void Xuat();
@@ -73,6 +71,8 @@ class NhanSu
         virtual void TimKiem(NhanSu*);
         virtual void TimKiemNS(string);
         virtual void TinhLuong();
+        virtual void ChangeNVL(string);
+        virtual void ChangeNTNS(string);
         const NhanSu& operator=(const NhanSu&);
         string getMaDV(){
             string x;
@@ -99,6 +99,33 @@ class NhanSu
         double getLuong(){
             return ThucLinh;
         }
-            
+        date getNgayVaoLam()
+        {
+            return ngayVaoLam;
+        }
+        date getNamSinh()
+        {
+            return namSinh;
+        }
+        void setHotenMoi(string hotenmoi)
+        {
+           this->hoTen.clear();
+           this->hoTen += hotenmoi;
+            // cout << this->hoTen;
+        }
         int& operator[]( int&);
+        void setMaDVmoi(string MaDVmoi)
+        {
+            maNV[0]=MaDVmoi[0];
+            maNV[1]=MaDVmoi[1];
+        }
+        void setMaCVmoi(string maCVmoi)
+        {
+            maNV[2]=maCVmoi[0];
+            maNV[3]=maCVmoi[1];
+        }
+        void getGioiTinh(string gioitinh)
+        {
+            this->gioiTinh=gioitinh;
+        }
 };

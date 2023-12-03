@@ -7,7 +7,24 @@
 #include <string>
 using namespace std;
 NhanSu *ds[10000];
-//
+// NhanSu *ds1[10000];
+string ma1, ma2;
+
+string _tachten1nguoi ( string hoten)
+{
+    std::size_t space_pos = hoten.find_last_of(' ');
+    std::string ten = hoten.substr(space_pos + 1);
+    return ten;
+}
+
+string _tachho1nguoi(string hoten)
+{
+
+    std::size_t space_pos = hoten.find(' ');
+    std::string ho_dem = hoten.substr(0, space_pos);
+        return ho_dem;
+}
+
 // g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o a
 
 void Xuat(){
@@ -134,7 +151,8 @@ void Menu(NhanSu *ds[], int &n){
         cout << "\n\t\t\t\t 4. Xoa nhan vien"; // xong
         cout << "\n\t\t\t\t 5. Xoa Chuc Vu"; 
         cout << "\n\t\t\t\t 6. Xoa Don Vi"; 
-        // cout << "\n\t\t\t\t 9. Xoa nhan vien";
+        cout << "\n\t\t\t\t 7. Sap xep";     //xong
+        cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien";
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
 
@@ -372,16 +390,526 @@ void Menu(NhanSu *ds[], int &n){
         }
 
         // xoa don vi
-        else if(luachon == 6){
-            
+        else if(luachon == 7){
+
+            string ten1, ten2;
+            int cnt=NhanSu::countnv+1;
+            int choice1, choice2, choice3;
+             NhanSu *x = new NhanSu();
+            cout<<"\n\t\t\t\t Chon kieu sap xep:";
+            cout<<"\n\t\t\t\t 1. Sap xep theo ma nhan vien";
+            cout<<"\n\t\t\t\t 2. Sap xep theo ten nhan vien";
+            cout<<"\n\t\t\t\t 3. Sap xep theo tuoi nhan vien";
+            cout<<"\n\t\t\t\t 4. Sap xep theo ma don vi";
+            cout<<"\n\t\t\t\t 5. Sap xep theo ma chuc vu";
+            cin>>choice1;
+             while(choice1 !=1&&choice1!=2&&choice1!=3&&choice1!=4&&choice1!=5)
+                {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice1;
+                }
+            if(choice1==1)
+            {
+                 
+                cout<<"\n\t\t\t\t Sap xep theo thu tu:"<<endl;
+                cout<<"\n\t\t\t\t 1. Giam dan"<<endl;
+                cout<<"\n\t\t\t\t 2. Tang dan"<<endl;
+                cin>>choice2;
+                while(choice2 !=1&&choice2!=2)
+                {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice2;
+                }
+              if(choice2==1)
+              {
+             for(int i=0; i<NhanSu::countnv; i++)
+            {
+                
+                for(int j=i; j<NhanSu::countnv;j++)
+                {
+               long ma1=stol(ds[j]->getMaNV());
+               long ma2=stol(ds[i]->getMaNV());
+                  if(ma1>ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+                }
+            }
+               Xuat();
+            }
+          else if(choice2==2)
+          {
+               for(int i=0; i<NhanSu::countnv; i++)
+            {
+                
+                for(int j=i; j<NhanSu::countnv;j++)
+                {
+               long ma1=stol(ds[j]->getMaNV());
+               long ma2=stol(ds[i]->getMaNV());
+                  if(ma1<ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+                }
+            }
+               Xuat();
+          }
+
+            }
+            else if(choice1==2)
+            {
+                string ten1, ten2, ho1, ho2;
+                cout<<"\n\t\t\t\t 1. Giam dan"<<endl;
+                cout<<"\n\t\t\t\t 2. Tang dan"<<endl;
+                cin>>choice2;
+               while(choice2 !=1&&choice2!=2)
+                  {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice2;
+                }
+                if(choice2==1)
+                {
+                       
+                  for(int i = 0;i < NhanSu::countnv; i++) {
+                 
+                 for(int j = i+1; j < NhanSu::countnv; j++) {
+                       ten1=_tachten1nguoi(ds[i]->getHoTen());
+                       ten2=_tachten1nguoi(ds[j]->getHoTen());
+            if(_stricmp(ten1.c_str(), ten2.c_str()) < 0) {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+            }
+            else if(_stricmp(ten1.c_str(), ten2.c_str()) == 0)
+            {
+                ho1=_tachho1nguoi(ds[i]->getHoTen());
+                ho2=_tachho1nguoi(ds[j]->getHoTen());
+                if(_stricmp(ho1.c_str(), ho1.c_str()) < 0) {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+            }
         }
-        else {
+    }
+            }    
+               Xuat();
+        }
+         else if(choice2==2)
+         {
+                       
+                  for(int i = 0;i < NhanSu::countnv; i++) {
+                 
+                 for(int j = i+1; j < NhanSu::countnv; j++) {
+                       ten1=_tachten1nguoi(ds[i]->getHoTen());
+                       ten2=_tachten1nguoi(ds[j]->getHoTen());
+            if(_stricmp(ten1.c_str(), ten2.c_str()) > 0) {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+            }
+            else if(_stricmp(ten1.c_str(), ten2.c_str()) == 0)
+            {
+                ho1=_tachho1nguoi(ds[i]->getHoTen());
+                ho2=_tachho1nguoi(ds[j]->getHoTen());
+                if(_stricmp(ho1.c_str(), ho1.c_str()) > 0) {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+            }
+        }
+    }
+          }
+             Xuat();
+           }
+        }
+        if(choice1==3)
+        {
+              cout<<"\n\t\t\t\t 1. Giam dan"<<endl;
+                cout<<"\n\t\t\t\t 2. Tang dan"<<endl;
+                cin>>choice2;
+               while(choice2 !=1&&choice2!=2)
+                  {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice2;
+                }
+               if(choice2==1)
+               {
+                      
+                  for(int i = 0;i < NhanSu::countnv; i++) {
+                    
+                 for(int j = i+1; j < NhanSu::countnv; j++) {
+                         if(ds[i]->getNgayVaoLam().getNam() < ds[j]->getNgayVaoLam().getNam() )
+                         {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+                         }
+                         else if(ds[i]->getNgayVaoLam().getNam() == ds[j]->getNgayVaoLam().getNam())
+                         {
+                            if(ds[i]->getNgayVaoLam().getThang() < ds[j]->getNgayVaoLam().getThang() )
+                            {
+                                x=ds[i];
+                                ds[i]=ds[j];
+                                ds[j]=x;
+                            }
+                            else if(ds[i]->getNgayVaoLam().getThang() == ds[j]->getNgayVaoLam().getThang())
+                            {
+                                if(ds[i]->getNgayVaoLam().getNgay() < ds[j]->getNgayVaoLam().getNgay())
+                                {
+                                    x=ds[i];
+                                    ds[i]=ds[j];
+                                    ds[j]=x;
+                                }
+                            }
+                         }
+                 }
+                  }
+                     Xuat();
+               }
+               else if(choice2==2)
+               {
+                  for(int i = 0;i < NhanSu::countnv; i++) {
+                    
+                 for(int j = i+1; j < NhanSu::countnv; j++) {
+                         if(ds[i]->getNgayVaoLam().getNam() > ds[j]->getNgayVaoLam().getNam() )
+                         {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+                         }
+                         else if(ds[i]->getNgayVaoLam().getNam() == ds[j]->getNgayVaoLam().getNam())
+                         {
+                            if(ds[i]->getNgayVaoLam().getThang() > ds[j]->getNgayVaoLam().getThang() )
+                            {
+                                x=ds[i];
+                                ds[i]=ds[j];
+                                ds[j]=x;
+                            }
+                            else if(ds[i]->getNgayVaoLam().getThang() == ds[j]->getNgayVaoLam().getThang())
+                            {
+                                if(ds[i]->getNgayVaoLam().getNgay() > ds[j]->getNgayVaoLam().getNgay())
+                                {
+                                    x=ds[i];
+                                    ds[i]=ds[j];
+                                    ds[j]=x;
+                                }
+                            }
+                         }
+                 }
+                  }
+                     Xuat();
+               }        
+        }
+        else if(choice1 == 4)
+           {
+          string madv1;
+          string madv2;
+           cout<<"\n\t\t\t\t 1. Giam dan"<<endl;
+                cout<<"\n\t\t\t\t 2. Tang dan"<<endl;
+                cin>>choice2;
+               while(choice2 !=1&&choice2!=2)
+                  {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice2;
+                }
+        if(choice2==1)
+        {
+             for(int i = 0;i < NhanSu::countnv; i++) {
+                      for(int j = i+1; j < NhanSu::countnv; j++) {
+               if(ds[i]->getMaDV()<ds[j]->getMaDV())
+               {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+               }
+               else if(ds[i]->getMaDV() == ds[j]->getMaDV())
+               {
+                     long ma1=stol(ds[j]->getMaNV());
+                      long ma2=stol(ds[i]->getMaNV());
+                  if(ma1<ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+               }
+                 }
+        }
+          
+           Xuat();
+        }
+        else if(choice2==2)
+        {
+             for(int i = 0;i < NhanSu::countnv; i++) {
+                      for(int j = i+1; j < NhanSu::countnv; j++) {
+               if(ds[i]->getMaDV()>ds[j]->getMaDV())
+               {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+               }
+                 if(ds[i]->getMaDV()==ds[j]->getMaDV()){
+                 long ma1=stol(ds[j]->getMaNV());
+               long ma2=stol(ds[i]->getMaNV());
+                  if(ma1>ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+                      }
+                 }
+        }
+        Xuat();
+        }
+          
+        }
+        else if(choice1==5)
+        {
+           cout<<"\n\t\t\t\t 1. Giam dan"<<endl;
+                cout<<"\n\t\t\t\t 2. Tang dan"<<endl;
+                cin>>choice2;
+               while(choice2 !=1&&choice2!=2)
+                  {
+                    cout<<"\n\t\t\t\t Vui long nhap dung so thu tu";
+                    cin>>choice2;
+                }
+              if(choice2==1)
+            {
+             for(int i = 0;i < NhanSu::countnv; i++) {
+                      for(int j = i+1; j < NhanSu::countnv; j++) {
+               if(ds[i]->getMaCV()<ds[j]->getMaCV())
+               {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+               }
+               else if(ds[i]->getMaCV()==ds[i]->getMaCV())
+               {
+                  long ma1=stol(ds[j]->getMaNV());
+               long ma2=stol(ds[i]->getMaNV());
+                  if(ma1<ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+               }
+                 }
+        }
+          
+           Xuat();
+        }
+        else if(choice2==2)
+        {
+             for(int i = 0;i < NhanSu::countnv; i++) {
+                      for(int j = i+1; j < NhanSu::countnv; j++) {
+               if(ds[i]->getMaCV()>ds[j]->getMaCV())
+               {
+                           x=ds[i];
+                           ds[i]=ds[j];
+                           ds[j]=x;
+               }
+                else if(ds[i]->getMaCV()==ds[i]->getMaCV())
+               {
+                  long ma1=stol(ds[j]->getMaNV());
+               long ma2=stol(ds[i]->getMaNV());
+                  if(ma1>ma2)
+                  {
+                    x=ds[i];
+                    ds[i]=ds[j];
+                    ds[j]=x;
+                  }
+               }
+                 }
+        }
+          
+           Xuat();
+        }
+        }          
+   }
+        else if(luachon == 8)
+        {
+            int flag=1;
+            cout<<"\n\t\t\t\t Thay doi thong tin theo: ";
+            cout<<"\n\t\t\t\t 1. Ma nhan vien"<<endl;
+            cout<<"\n\t\t\t\t 2. Ho ten nhan vien"<<endl;
+            int choicex;
+           cin>>choicex;
+           while(choicex!=1&&choicex!=2)
+           {
+            cout<<"\n\t\t\t\t Nhap lai lua chon"<<endl;
+            cin>>choicex;
+           }
+           if(choicex==1)
+           {
+            string s;
+            int choice;
+        
+            cout << "\n\t\t\t\tNhap ma can tim: "<<endl;
+           cin>>s;
+            if(s.length()!=8)
+            {
+                cout<<"\n\t\t\t\t Nhap day du ma nhan vien!";
+            }
+            
+           int a = s.length();
+            // cout << "/"<<s<<"/" << endl;
+            for(int i = 0; i < NhanSu::countnv;i++){
+                string ss = ds[i]->getMaNV();
+                // cout << "/"<<ss<<"/" << endl;
+                // for(int i=0;i<ss.length();i++){
+                //     ss[i] = tolower(ss[i]);
+                // }
+                // cout << "/"<<ss<<"/" << end;
+                if(ss==s&&ss.length()==a)
+                {
+                    cout<<"\n\t\t\t\t Nhap thong tin muon thay doi:";
+                    cout<<"\n\t\t\t\t 1. Ho ten nhan vien";
+                    cout<<"\n\t\t\t\t 2. Ngay thang nam vao lam";
+                    cout<<"\n\t\t\t\t 3. Ngay thang nam sinh";
+                    cout<<"\n\t\t\t\t 4. Don vi nhan vien";
+                    cout<<"\n\t\t\t\t 5. Chuc vu nhan vien";
+                    cout<<"\n\t\t\t\t 6. Gioi tinh nhan vien";
+                    cin>>choice;
+                    while(choice!=1&&choice!=2&&choice!=3&&choice!=4&&choice!=5&&choice!=6)
+                    {
+                        cout<<"\n\t\t\t\t Nhap lai lua chon";
+                        cin>>choice;
+                    }
+                    if(choice==1)
+                    {
+                        cout<<"\n\t\t\t\t Nhap ho ten nhan vien moi: ";
+                        string hotenmoi;
+                        // cin >> hotenmoi;
+                        cin.ignore();
+                        // getline(cin, hotenmoi); 
+                        getline(cin, hotenmoi);
+                        
+                        // cout << hotenmoi <<" 123" << endl;
+                        ds[i]->setHotenMoi(hotenmoi);
+                        Xuat();
+                    }
+                    if(choice == 2)
+                    {
+                        string nvl;
+                        cout<<"\n\t\t\t\t Nhap ngay thang vao lam moi:"<<endl;
+                        cin>>nvl;
+                        ds[i]->ChangeNVL(nvl);
+                        
+                        while(ds[i]->getNgayVaoLam().getNgay()>31||ds[i]->getNgayVaoLam().getNgay()<0||
+                        ds[i]->getNgayVaoLam().getThang()>12||ds[i]->getNgayVaoLam().getThang()<=0||
+                        (ds[i]->getNgayVaoLam().getNam()-ds[i]->getNamSinh().getNam())<=18||
+                        (ds[i]->getNgayVaoLam().getNam()-ds[i]->getNamSinh().getNam())>70)
+                        {
+                            cout<<"\n\t\t\t\t Nhap lai ngay thang vao lam:"<<endl;
+                            cin>>nvl;              
+                            ds[i]->ChangeNVL(nvl);
+                        }
+                        cout << "check";
+                        Xuat();
+                        // ds[i]->getNgayVaoLam().setNgay(ngaymoi);
+                        // ds[i]->getNgayVaoLam().setThang(thangmoi);
+                        // ds[i]->getNgayVaoLam().setNam(nammoi);
+                    }
+                    if(choice == 3)
+                    {
+                        string namsinh;
+                        cout<<"\n\t\t\t\t Nhap ngay thang nam sinh moi:"<<endl;
+                        cin>>namsinh;
+                        ds[i]->ChangeNTNS(namsinh);
+                        
+                        while(ds[i]->getNamSinh().getNgay()>31||ds[i]->getNamSinh().getNgay()<0||
+                        ds[i]->getNamSinh().getThang()>12||ds[i]->getNamSinh().getThang()<=0||
+                        ds[i]->getNamSinh().getNam()<1900||ds[i]->getNamSinh().getNam()>2018)
+                        {
+                            cout<<"\n\t\t\t\t Nhap lai ngay thang nam sinh moi:"<<endl;
+                            cin>>namsinh;              
+                            ds[i]->ChangeNTNS(namsinh);
+                        }
+                        cout << "check";
+                        Xuat();
+                    }
+                    if(choice == 4)
+                    {
+                        cout<<"\n\t\t\t\t Nhap ma don vi moi"<<endl;
+                        string s;
+                        cin>>s;
+                        while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 3)
+                        {
+                            cout << "Nhap ma don vi khong hop le, moi nhap lai !\n";
+                            cin>>s;
+                        }
+                        ds[i]->setMaDVmoi(s);
+                        Xuat();
+                    }
+                    if(choice == 5)
+                    {
+                    cout<<"\n\t\t\t\t Nhap ma chuc vu moi: ";
+                        string s;
+                        cin>>s;
+                    while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 5)
+                        {
+                            cout << "Nhap ma chuc vu khong hop le, moi nhap lai !\n";
+                            cin>>s;
+                        }
+                        ds[i]->setMaCVmoi(s);
+                        Xuat();
+
+                    }
+                    if(choice == 6)
+                    {
+                    cout<<"\n\t\t\t\t Nhap gioi tinh moi:"<<endl;
+                    string gt;
+                    cin >> gt;
+                    for(int i=0;i<gt.length();i++){
+                        gt[i] = tolower(gt[i]);
+                    }
+                    while(gt != "nam" && gt != "nu"){
+                        cout<<"\t\t\t\t Nhap lai gioi tinh"<<endl;
+                        cin >> gt;
+                        for(int i=0;i<gt.length();i++){
+                            gt[i] = tolower(gt[i]);
+                        }
+                    }
+                    gt[0] = toupper(gt[0]);
+                    // for(int i=1; i<gt.length(); i++)
+                    // {
+                    //   gt[i]=tolower(gt[i]);
+                    
+                    // }
+                    ds[i]->getGioiTinh(gt);
+                    Xuat();
+                    }
+                    flag=0;
+                    } 
+            }
+            if(flag==1) cout<<"\n\t\t\t\t Khong co nhan vien co ma nhu da nhap";
+           }
+        }
+
+        // else {
+        //     cout<<ds[0]->getNgayVaoLam().getNam();
+        //    cout<<ds[0]->getNamSinh().getNam();
+        //     break;
+        // }
+
+        if(luachon == 0){
             break;
         }
+        while(luachon<0&&luachon>=8)
+        {
+            cout<<"\n\t\t\t\t Nhap lai lua chon";
+        }
         // break;
+    
     }
     filein.close();
-}
+    }
 int main(){
     int n = 0;
     Menu(ds, n);
