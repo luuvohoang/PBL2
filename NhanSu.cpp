@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 #include <fstream>
 using namespace std;
-//      g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o aa
+//      g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o a
 int NhanSu::countnv = 0;
 
 void NhanSu :: TinhLuong(){
@@ -22,6 +22,45 @@ void NhanSu :: TinhLuong(){
         ThucLinh += LuongCoBan * HSLuongNhanVien;
     }
 }
+
+void NhanSu :: DocFile(ifstream &filein){
+    char a;
+    filein >> a;
+    string mnv;
+    getline(filein, mnv, ',');
+    maNV = a + mnv;
+    // cout << maNV << endl;
+    string ten;
+    filein >> a;
+    getline(filein, ten, ',');
+    hoTen = a + ten;
+    // cout << hoTen << endl;
+    int ngay, thang, nam;
+    filein >> ngay;
+    namSinh.setNgay(ngay);
+    filein >> a;
+    filein >> thang;
+    namSinh.setThang(thang);
+    filein >> a;
+    filein >> nam;
+    namSinh.setNam(nam);
+    filein >> a;
+    // cout <<ngay<<"/" << thang <<"/" << nam << endl;
+    string gt;
+    getline(filein, gt, ',');
+    gioiTinh = gt;
+    // cout << gioiTinh << endl;
+    int ngay1, thang1, nam1;
+    filein >> a;
+    filein >> ngay1;
+    ngayVaoLam.setNgay(ngay1);
+    filein >> a;
+    filein >> thang1;
+    ngayVaoLam.setThang(thang1);
+    filein >> a;
+    filein >> nam1;
+    ngayVaoLam.setNam(nam1);
+}   
 
 void NhanSu :: DocFile(ifstream &filein){
     char a;
@@ -276,7 +315,55 @@ void NhanSu :: XuatFile(ofstream &fileout){
             l++;
         }
     }
-    fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam() << "\n";
+    fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
+    fileout << "\t     |";
+    char b=maNV[3];
+    if(b =='1')
+    {
+         fileout<<LuongCoBan*HSLuongGiamDoc<<"(tr)"<<endl;
+    }
+    else if(b == '2')
+    {
+        fileout<<LuongCoBan*HSLuongPhoGiamDoc<<"(tr)"<<endl;
+    }
+    else if(b == '3')
+    {
+        fileout<<LuongCoBan*HSLuongTruongPhong<<"(tr)"<<endl;
+    }
+    else if(b == '4')
+    {
+        fileout<<LuongCoBan*HSLuongPhoPhong<<"(tr)"<<endl;
+    }
+    else if(b == '5')
+    {
+        fileout<<LuongCoBan*HSLuongNhanVien<<"(tr)"<<endl;
+    }
+    //  long long luong*=1000000;
+    // if(b =='1')
+    // {
+    //      luong=LuongCoBan*HSLuongGiamDoc;
+    //      fileout<<luong<<endl;
+    // }
+    // else if(b == '2')
+    // {
+    //     luong=LuongCoBan*HSLuongPhoGiamDoc;
+    //      fileout<<luong<<endl;
+    // }
+    // else if(b == '3')
+    // {
+    //      luong=LuongCoBan*HSLuongTruongPhong;
+    //      fileout<<luong<<endl;
+    // }
+    // else if(b == '4')
+    // {
+    //      luong=LuongCoBan*HSLuongPhoPhong;
+    //      fileout<<luong<<endl;
+    // }
+    // else if(b == '5')
+    // {
+    //      luong=LuongCoBan*HSLuongNhanVien;
+    //      fileout<<luong<<endl;
+    // }
 }
 
 void NhanSu::TimKiemNS(string s){

@@ -4,7 +4,6 @@ class ChucVu : public NhanSu
 {
 protected:
     string MaCV;
-    string TenCV;
     int SL_CV = 1;
     const int MaxCV = 20;
 public:

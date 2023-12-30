@@ -1,6 +1,9 @@
 #pragma once
-#include<bits/stdc++.h>
-using namespace std;
+#include "NhanVien.h"
+#include "PhoPhong.h"
+#include "TruongPhong.h"
+#include "PhoGiamDoc.h"
+#include "GiamDoc.h"
 
 class date
 {
@@ -42,7 +45,7 @@ class date
 //     int thang;
 //     int nam;
 // };
-class NhanSu
+class NhanSu : public NhanVien, public PhoPhong, public TruongPhong, public PhoGiamDoc, public GiamDoc
 {
     protected:       
         string maNV;
@@ -53,18 +56,16 @@ class NhanSu
         string chucVu;
         double heSo;
         double luong;
-        double phuCap;
         date ngayVaoLam;
         long double ThucLinh = 0;
-        double LuongCoBan = 1800000;
-        double HSLuongGiamDoc = 8.56;
-        double HSLuongPhoGiamDoc = 6.78;
-        double HSLuongTruongPhong = 5.45;
-        double HSLuongPhoPhong = 4.32;
-        double HSLuongNhanVien = 3.63;
+        double LuongCoBan = 1.8;
+
     public:
         static int countnv;
         virtual void DocFile(ifstream &);
+        virtual void DocHSLuong(ifstream &);
+        virtual void DocMaDV(ifstream &);
+        virtual void DocMaCV(ifstream &);
         virtual void Nhap(string);
         virtual void Xuat();
         virtual void XuatFile(ofstream &); 

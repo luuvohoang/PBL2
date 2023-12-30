@@ -36,12 +36,14 @@ rằng buộc
 
 
 Note 23/11
-+ lương của từng nhân viên
++ lương của từng nhân viên // xong
 + lương thưởng
-+ sắp xếp 
-+ thay đổi thông tin nhân viên
-+ show bảng thống kê
++ sắp xếp //xong
++ thay đổi thông tin nhân viên // xong
++ show bảng thống kê // xong
 
+Note 5/12 
++ sử dụng mã trong file
 
 
 DVi	 Ma Nhan Vien	Ho va Ten				Nam Sinh 	 Gioi Tinh 	 Don Vi 	Chuc Vu 		Ngay Vao Lam.
