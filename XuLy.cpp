@@ -1,8 +1,12 @@
+#include<iostream>
+#include <fstream>
+#include "NhanSu.h"
 #include "DonVi.h"
 #include "ChucVu.h"
-#include "NhanSu.h"
+#include <cstring> 
+#include <string>
+using namespace std;
 NhanSu *ds[10000];
-ChucVu  *dsCV[1000];
 // NhanSu *ds1[10000];
 string ma1, ma2;
 
@@ -29,7 +33,7 @@ void Xuat(){
     ofstream fileout;
     // cap nhat file DanhSachNhanSu
     fileout.open("DanhsachNhanSu.txt", ios_base::out);
-    fileout << "DVi\t |Ma Nhan Vien\t|Ho va Ten\t\t\t\t|Nam Sinh \t|Gioi Tinh \t |Don Vi \t|Chuc Vu \t\t|Ngay Vao Lam \t |Luong\n";
+    fileout << "DVi\t |Ma Nhan Vien\t|Ho va Ten\t\t\t\t|Nam Sinh \t| Gioi Tinh \t |Don Vi \t|Chuc Vu \t\t|Ngay Vao Lam \n";
     for(int i = 0; i < NhanSu::countnv; i++){
         fileout << i+1 << "\t";
         ds[i]->XuatFile(fileout);
@@ -63,7 +67,7 @@ void Xuat(){
             dsDV[pos]->CapNhat(ds[i]);
         }
     }
-    fileout.open("DonViOutput.txt", ios_base::out);
+    fileout.open("DonVi.txt", ios_base::out);
     fileout << "DVi\t|Ma DVi\t |Ten Don Vi\t|So luong Nhan Vien\t\t\t\t|So luong toi da \n";
     for(int i = 0; i < DonVi::countDV; i++){
         fileout << i+1 << "\t";
@@ -74,7 +78,7 @@ void Xuat(){
 
 
     // cap nhat file ChucVu
-    
+    ChucVu  *dsCV[1000];
     int countCV1 = 0;
     ChucVu::countCV = 0;
     for(int i = 0; i < NhanSu::countnv;i++){
@@ -98,11 +102,11 @@ void Xuat(){
             dsCV[pos]->CapNhat(ds[i]);
         }
     }
-    fileout.open("ChucVuOutput.txt", ios_base::out);
+    fileout.open("ChucVu.txt", ios_base::out);
     fileout << "DVi\t\t|Ma CVu\t |Ten Chuc Vu\t\t\t\t|So luong toi da \n";
     for(int i = 0; i < ChucVu::countCV; i++){
         fileout << i+1 << "\t";
-        dsCV[i]->XuatCV(fileout);
+        dsCV[i]->Xuat(fileout);
     }
     // cout << "\n\t\t\t\t Da xuat du lieu ra file ChucVu.txt !\n";
     fileout.close();  
@@ -135,17 +139,6 @@ void Menu(NhanSu *ds[], int &n){
         NhanSu::countnv++;
     }
     filein.close();
-
-    filein.open("ChucVuInput.txt", ios_base::in);
-    filein >> n;
-    // nhanvien *x = NULL; 
-    for(int i = 0; i < n; i++){
-        ChucVu *x = new ChucVu();
-        x->DocFileCV(filein);
-        dsCV[i] = x;
-        ChucVu::countCV++;
-    }
-    filein.close();
     Xuat();
 
     while (true){
@@ -156,10 +149,10 @@ void Menu(NhanSu *ds[], int &n){
         cout << "\n\t\t\t\t 2. Tim kiem nhan vien theo ten";  // xong
         cout << "\n\t\t\t\t 3. Tim kiem nhan vien theo ma"; //xong
         cout << "\n\t\t\t\t 4. Xoa nhan vien"; // xong
-        cout << "\n\t\t\t\t 5. Xuat Danh Sach Nhan Vien"; //xong
-        cout << "\n\t\t\t\t 6. Xoa Don Vi"; // xong
+        cout << "\n\t\t\t\t 5. Xuat Danh Sach Nhan Vien";
+        cout << "\n\t\t\t\t 6. Xoa Don Vi"; 
         cout << "\n\t\t\t\t 7. Sap xep";     //xong
-        cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien";// xong
+        cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien";
         cout << "\n\t\t\t\t 9. Xuat Bang thong ke";// xong
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
@@ -384,11 +377,11 @@ void Menu(NhanSu *ds[], int &n){
         }
         // xuat danh sach
         else if(luachon == 5){
-            Xuat();
+             Xuat();
         }
         // xoa don vi
         else if(luachon == 6){
-            string s;
+             string s;
             cout << "\n\t\t\t\tNhap Ma Don Vi can xoa: ";
             cin >> s;
             
@@ -786,13 +779,13 @@ void Menu(NhanSu *ds[], int &n){
             cout<<"\n\t\t\t\t 1. Ma nhan vien"<<endl;
             cout<<"\n\t\t\t\t 2. Ho ten nhan vien"<<endl;
             int choicex;
+           cin>>choicex;
+           while(choicex!=1&&choicex!=2)
+           {
+            cout<<"\n\t\t\t\t Nhap lai lua chon"<<endl;
             cin>>choicex;
-            while(choicex!=1&&choicex!=2)
-            {
-                cout<<"\n\t\t\t\t Nhap lai lua chon"<<endl;
-                cin>>choicex;
-            }
-            if(choicex==1)
+           }
+           if(choicex==1)
            {
             string s;
             int choice;
@@ -937,308 +930,12 @@ void Menu(NhanSu *ds[], int &n){
             }
             if(flag==1) cout<<"\n\t\t\t\t Khong co nhan vien co ma nhu da nhap";
            }
-            else if(choicex==2)
-            {
-            int cnt=0, vt[100];
-            fileout.open("TimKiemNhanVien.txt", ios_base::out);
-            string s;
-            cout << "Nhap ho ten can thay doi: ";
-            getline(cin, s);
-            getline(cin, s);
-            for(int i=0;i<s.length();i++){
-                s[i] = tolower(s[i]);
-            }
-            for(int i = 0; i < NhanSu::countnv;i++){
-                
-                ifstream fileinn;
-                ofstream fileoutt;
-                string ss = ds[i]->getHoTen();
-                for(int i=0;i<ss.length();i++){
-                    ss[i] = tolower(ss[i]);
-                }
-                for(int j =  0 ;j < min(ss.length()-s.length() + 1, ss.length());j++){
-                    int flag = 1;
-                    for(int i=0;i<s.length();i++){
-                        if(s[i] != ss[i+j]){
-                            flag = 0;
-                            break;
-                        }
-                    }
-                    if(flag == 1){
-                        cnt++;
-                        fileout<<cnt<<". ";
-                        ds[i]->XuatFile(fileout);
-                        vt[cnt]=i;
-                        break;
-                    }
-                }
-                
-            }
-            cout << "/"<<s<<"/" << endl;
-            fileout.close();  
-            if(cnt==1){
-                    int choice;
-                    cout<<"\n\t\t\t\t Nhap thong tin muon thay doi:";
-                    cout<<"\n\t\t\t\t 1. Ho ten nhan vien";
-                    cout<<"\n\t\t\t\t 2. Ngay thang nam vao lam";
-                    cout<<"\n\t\t\t\t 3. Ngay thang nam sinh";
-                    cout<<"\n\t\t\t\t 4. Don vi nhan vien";
-                    cout<<"\n\t\t\t\t 5. Chuc vu nhan vien";
-                    cout<<"\n\t\t\t\t 6. Gioi tinh nhan vien";
-                    cin>>choice;
-                    while(choice!=1&&choice!=2&&choice!=3&&choice!=4&&choice!=5&&choice!=6)
-                    {
-                        cout<<"\n\t\t\t\t Nhap lai lua chon";
-                        cin>>choice;
-                    }
-                    if(choice==1)
-                    {
-                        cout<<"\n\t\t\t\t Nhap ho ten nhan vien moi: ";
-                        string hotenmoi;
-                        // cin >> hotenmoi;
-                        cin.ignore();
-                        // getline(cin, hotenmoi); 
-                        getline(cin, hotenmoi);
-                        
-                        // cout << hotenmoi <<" 123" << endl;
-                        ds[vt[cnt]]->setHotenMoi(hotenmoi);
-                        Xuat();
-                    }
-                    else if(choice==2)
-                    {
-                       string nvl;
-                        cout<<"\n\t\t\t\t Nhap ngay thang vao lam moi:"<<endl;
-                        cin>>nvl;
-                        ds[vt[cnt]]->ChangeNVL(nvl);
-                        
-                        while(ds[vt[cnt]]->getNgayVaoLam().getNgay()>31||ds[vt[cnt]]->getNgayVaoLam().getNgay()<0||
-                        ds[vt[cnt]]->getNgayVaoLam().getThang()>12||ds[vt[cnt]]->getNgayVaoLam().getThang()<=0||
-                        (ds[vt[cnt]]->getNgayVaoLam().getNam()-ds[vt[cnt]]->getNamSinh().getNam())<=18||
-                        (ds[vt[cnt]]->getNgayVaoLam().getNam()-ds[vt[cnt]]->getNamSinh().getNam())>70)
-                        {
-                            cout<<"\n\t\t\t\t Nhap lai ngay thang vao lam:"<<endl;
-                            cin>>nvl;              
-                            ds[vt[cnt]]->ChangeNVL(nvl);
-                        }
-                        cout << "check";
-                        Xuat();  
-                    }
-                    else if(choice==3)
-                    {
-                        string namsinh;
-                        cout<<"\n\t\t\t\t Nhap ngay thang nam sinh moi:"<<endl;
-                        cin>>namsinh;
-                        ds[vt[cnt]]->ChangeNTNS(namsinh);
-                        
-                        while(ds[vt[cnt]]->getNamSinh().getNgay()>31||ds[vt[cnt]]->getNamSinh().getNgay()<0||
-                        ds[vt[cnt]]->getNamSinh().getThang()>12||ds[vt[cnt]]->getNamSinh().getThang()<=0||
-                        ds[vt[cnt]]->getNamSinh().getNam()<1900||ds[vt[cnt]]->getNamSinh().getNam()>2018)
-                        {
-                            cout<<"\n\t\t\t\t Nhap lai ngay thang nam sinh moi:"<<endl;
-                            cin>>namsinh;              
-                            ds[vt[cnt]]->ChangeNTNS(namsinh);
-                        }
-                        cout << "check";
-                        Xuat();
-                    }
-                    else if(choice==4)
-                    {
-                        cout<<"\n\t\t\t\t Nhap ma don vi moi"<<endl;
-                        string s;
-                        cin>>s;
-                        while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 3)
-                        {
-                            cout << "Nhap ma don vi khong hop le, moi nhap lai !\n";
-                            cin>>s;
-                        }
-                        ds[vt[cnt]]->setMaDVmoi(s);
-                        Xuat(); 
-                    }
-                    else if(choice==5)
-                    {
-                       cout<<"\n\t\t\t\t Nhap ma chuc vu moi: ";
-                        string s;
-                        cin>>s;
-                      while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 5)
-                        {
-                            cout << "Nhap ma chuc vu khong hop le, moi nhap lai !\n";
-                            cin>>s;
-                        }
-                        ds[vt[cnt]]->setMaCVmoi(s);
-                        Xuat();
-                    }
-                    else if(choice==6)
-                    {
-                          cout<<"\n\t\t\t\t Nhap gioi tinh moi:"<<endl;
-                    string gt;
-                    cin >> gt;
-                    for(int i=0;i<gt.length();i++){
-                        gt[i] = tolower(gt[i]);
-                    }
-                    while(gt != "nam" && gt != "nu"){
-                        cout<<"\t\t\t\t Nhap lai gioi tinh"<<endl;
-                        cin >> gt;
-                        for(int i=0;i<gt.length();i++){
-                            gt[i] = tolower(gt[i]);
-                        }
-                    }
-                    gt[0] = toupper(gt[0]);
-                    string gtms;
-                    gtms+=" ";
-                    gtms+=gt;
-                    ds[vt[cnt]]->getGioiTinh(gtms);
-                    Xuat();
-                    }
-
-            }
-            else if(cnt>1)
-            {
-                cout<<"\n\t\t\t\t Nhap so thu tu tim kiem cua nguoi ban muon thay doi: ";
-                int stt, check=1;
-                cin>>stt;
-                for(int i=1; i<=cnt; i++)
-                {
-                    if(stt==i)
-                    {
-                        check=0;
-                    }
-                }
-                while(check!=0)
-                {
-                    check=1;
-                   cout<<"\n\t\t\t\t Nhap lai so thu tu: ";
-                   cin>>stt;
-                    for(int i=1; i<=cnt; i++)
-                {
-                    if(stt==i)
-                    {
-                        check=0;
-                    }
-                }
-                }
-                  int choice;
-                    cout<<"\n\t\t\t\t Nhap thong tin muon thay doi:";
-                    cout<<"\n\t\t\t\t 1. Ho ten nhan vien";
-                    cout<<"\n\t\t\t\t 2. Ngay thang nam vao lam";
-                    cout<<"\n\t\t\t\t 3. Ngay thang nam sinh";
-                    cout<<"\n\t\t\t\t 4. Don vi nhan vien";
-                    cout<<"\n\t\t\t\t 5. Chuc vu nhan vien";
-                    cout<<"\n\t\t\t\t 6. Gioi tinh nhan vien";
-                    cin>>choice;
-                    while(choice!=1&&choice!=2&&choice!=3&&choice!=4&&choice!=5&&choice!=6)
-                    {
-                        cout<<"\n\t\t\t\t Nhap lai lua chon";
-                        cin>>choice;
-                    }
-                    if(choice==1)
-                    {
-                        cout<<"\n\t\t\t\t Nhap ho ten nhan vien moi: ";
-                        string hotenmoi;
-                        // cin >> hotenmoi;
-                        cin.ignore();
-                        // getline(cin, hotenmoi); 
-                        getline(cin, hotenmoi);
-                        
-                        // cout << hotenmoi <<" 123" << endl;
-                        ds[vt[stt]]->setHotenMoi(hotenmoi);
-                        Xuat();
-                    }
-                      else if(choice==2)
-                    {
-                       string nvl;
-                        cout<<"\n\t\t\t\t Nhap ngay thang vao lam moi:"<<endl;
-                        cin>>nvl;
-                        ds[vt[stt]]->ChangeNVL(nvl);
-                        
-                        while(ds[vt[stt]]->getNgayVaoLam().getNgay()>31||ds[vt[stt]]->getNgayVaoLam().getNgay()<0||
-                        ds[vt[stt]]->getNgayVaoLam().getThang()>12||ds[vt[stt]]->getNgayVaoLam().getThang()<=0||
-                        (ds[vt[stt]]->getNgayVaoLam().getNam()-ds[vt[stt]]->getNamSinh().getNam())<=18||
-                        (ds[vt[stt]]->getNgayVaoLam().getNam()-ds[vt[stt]]->getNamSinh().getNam())>70)
-                        {
-                            cout<<"\n\t\t\t\t Nhap lai ngay thang vao lam:"<<endl;
-                            cin>>nvl;              
-                            ds[vt[cnt]]->ChangeNVL(nvl);
-                        }
-                        cout << "check";
-                        Xuat();  
-                    }
-                    else if(choice==3)
-                    {
-                        string namsinh;
-                        cout<<"\n\t\t\t\t Nhap ngay thang nam sinh moi:"<<endl;
-                        cin>>namsinh;
-                        ds[vt[stt]]->ChangeNTNS(namsinh);
-                        
-                        while(ds[vt[stt]]->getNamSinh().getNgay()>31||ds[vt[stt]]->getNamSinh().getNgay()<0||
-                        ds[vt[stt]]->getNamSinh().getThang()>12||ds[vt[stt]]->getNamSinh().getThang()<=0||
-                        ds[vt[stt]]->getNamSinh().getNam()<1900||ds[vt[stt]]->getNamSinh().getNam()>2018)
-                        {
-                            cout<<"\n\t\t\t\t Nhap lai ngay thang nam sinh moi:"<<endl;
-                            cin>>namsinh;              
-                            ds[vt[cnt]]->ChangeNTNS(namsinh);
-                        }
-                        cout << "check";
-                        Xuat();
-                    }
-                    else if(choice==4)
-                    {
-                        cout<<"\n\t\t\t\t Nhap ma don vi moi"<<endl;
-                        string s;
-                        cin>>s;
-                        while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 3)
-                        {
-                            cout << "Nhap ma don vi khong hop le, moi nhap lai !\n";
-                            cin>>s;
-                        }
-                        ds[vt[stt]]->setMaDVmoi(s);
-                        Xuat(); 
-                    }
-                    else if(choice==5)
-                    {
-                       cout<<"\n\t\t\t\t Nhap ma chuc vu moi: ";
-                        string s;
-                        cin>>s;
-                      while(s.length()!=2||s[0] != '0'||s[1] - '0' < 1 || s[1] - '0' > 5)
-                        {
-                            cout << "Nhap ma chuc vu khong hop le, moi nhap lai !\n";
-                            cin>>s;
-                        }
-                        ds[vt[stt]]->setMaCVmoi(s);
-                        Xuat();
-                    }
-                    else if(choice==6)
-                    {
-                          cout<<"\n\t\t\t\t Nhap gioi tinh moi:"<<endl;
-                    string gt;
-                    cin >> gt;
-                    for(int i=0;i<gt.length();i++){
-                        gt[i] = tolower(gt[i]);
-                    }
-                    while(gt != "nam" && gt != "nu"){
-                        cout<<"\t\t\t\t Nhap lai gioi tinh"<<endl;
-                        cin >> gt;
-                        for(int i=0;i<gt.length();i++){
-                            gt[i] = tolower(gt[i]);
-                        }
-                    }
-                    gt[0] = toupper(gt[0]);
-                    string gtms;
-                     gtms+=" ";
-                    gtms+=gt;
-                    ds[vt[stt]]->getGioiTinh(gtms);
-                    Xuat();
-                    }
-
-
-            }
-
-            }
         }
-       
+        // Xuat Bang thong ke
         else if(luachon == 9){
             Xuat();
         }
-       
+
         else if(luachon == 0){
             break;
         }
@@ -1250,7 +947,7 @@ void Menu(NhanSu *ds[], int &n){
     
     }
     filein.close();
-}
+    }
 int main(){
     int n = 0;
     Menu(ds, n);

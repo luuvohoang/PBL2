@@ -3,16 +3,19 @@
 class ChucVu : public NhanSu
 {
 protected:
-    vector<pair<string,string>> MaCV;
+    string MaCV;
+    string TenCV;
     int SL_CV = 1;
     const int MaxCV = 20;
 public:
     static int countCV;
-    virtual void CapNhat(NhanSu*);
-    virtual void DocFileCV(ifstream &);
+    string getMaCV1(){
+        return MaCV;
+    }
     virtual void NhapCV(NhanSu*);
+    virtual void CapNhat(NhanSu*);
     bool check(NhanSu*);
-    virtual void XuatCV(ofstream &);
+    virtual void Xuat(ofstream &);
 };
 
 

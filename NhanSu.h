@@ -116,7 +116,6 @@ class NhanSu : public NhanVien, public PhoPhong, public TruongPhong, public PhoG
            this->hoTen += hotenmoi;
             // cout << this->hoTen;
         }
-        int& operator[]( int&);
         void setMaDVmoi(string MaDVmoi)
         {
             maNV[0]=MaDVmoi[0];
