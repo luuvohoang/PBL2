@@ -63,9 +63,9 @@ class NhanSu : public NhanVien, public PhoPhong, public TruongPhong, public PhoG
     public:
         static int countnv;
         virtual void DocFile(ifstream &);
-        virtual void DocHSLuong(ifstream &);
-        virtual void DocMaDV(ifstream &);
-        virtual void DocMaCV(ifstream &);
+        // virtual void DocHSLuong(ifstream &);
+        // virtual void DocMaDV(ifstream &);
+        // virtual void DocMaCV(ifstream &);
         virtual void Nhap(string);
         virtual void Xuat();
         virtual void XuatFile(ofstream &); 
@@ -93,7 +93,9 @@ class NhanSu : public NhanVien, public PhoPhong, public TruongPhong, public PhoG
             x += maNV[3];
             return x;
         }
-        
+        string getTenCV(){
+            return chucVu;
+        }
         string getGT(){
             return gioiTinh;
         }

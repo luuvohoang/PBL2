@@ -1,66 +1,26 @@
 #include "NhanSu.h"
-#include<bits/stdc++.h>
-#include <fstream>
-using namespace std;
 //      g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o a
 int NhanSu::countnv = 0;
 
 void NhanSu :: TinhLuong(){
     if(this->getMaCV() == "01"){
-        ThucLinh += LuongCoBan * HSLuongGiamDoc;
+        ThucLinh += LuongCoBan * getLuongGD();
     }
     if(this->getMaCV() == "02"){
-        ThucLinh += LuongCoBan * HSLuongPhoGiamDoc;
+        ThucLinh += LuongCoBan * getLuongPGD();
     }
     if(this->getMaCV() == "03"){
-        ThucLinh += LuongCoBan * HSLuongTruongPhong;
+        ThucLinh += LuongCoBan * getLuongTP();
     }
     if(this->getMaCV() == "04"){
-        ThucLinh += LuongCoBan * HSLuongPhoPhong;
+        ThucLinh += LuongCoBan * getLuongPP();
     }
     if(this->getMaCV() == "05"){
-        ThucLinh += LuongCoBan * HSLuongNhanVien;
+        ThucLinh += LuongCoBan * getLuongNV();
     }
 }
 
-void NhanSu :: DocFile(ifstream &filein){
-    char a;
-    filein >> a;
-    string mnv;
-    getline(filein, mnv, ',');
-    maNV = a + mnv;
-    // cout << maNV << endl;
-    string ten;
-    filein >> a;
-    getline(filein, ten, ',');
-    hoTen = a + ten;
-    // cout << hoTen << endl;
-    int ngay, thang, nam;
-    filein >> ngay;
-    namSinh.setNgay(ngay);
-    filein >> a;
-    filein >> thang;
-    namSinh.setThang(thang);
-    filein >> a;
-    filein >> nam;
-    namSinh.setNam(nam);
-    filein >> a;
-    // cout <<ngay<<"/" << thang <<"/" << nam << endl;
-    string gt;
-    getline(filein, gt, ',');
-    gioiTinh = gt;
-    // cout << gioiTinh << endl;
-    int ngay1, thang1, nam1;
-    filein >> a;
-    filein >> ngay1;
-    ngayVaoLam.setNgay(ngay1);
-    filein >> a;
-    filein >> thang1;
-    ngayVaoLam.setThang(thang1);
-    filein >> a;
-    filein >> nam1;
-    ngayVaoLam.setNam(nam1);
-}   
+
 
 void NhanSu :: DocFile(ifstream &filein){
     char a;
@@ -320,23 +280,23 @@ void NhanSu :: XuatFile(ofstream &fileout){
     char b=maNV[3];
     if(b =='1')
     {
-         fileout<<LuongCoBan*HSLuongGiamDoc<<"(tr)"<<endl;
+         fileout<<LuongCoBan*getLuongGD()<<"(tr)"<<endl;
     }
     else if(b == '2')
     {
-        fileout<<LuongCoBan*HSLuongPhoGiamDoc<<"(tr)"<<endl;
+        fileout<<LuongCoBan*getLuongPGD()<<"(tr)"<<endl;
     }
     else if(b == '3')
     {
-        fileout<<LuongCoBan*HSLuongTruongPhong<<"(tr)"<<endl;
+        fileout<<LuongCoBan*getLuongTP()<<"(tr)"<<endl;
     }
     else if(b == '4')
     {
-        fileout<<LuongCoBan*HSLuongPhoPhong<<"(tr)"<<endl;
+        fileout<<LuongCoBan*getLuongPP()<<"(tr)"<<endl;
     }
     else if(b == '5')
     {
-        fileout<<LuongCoBan*HSLuongNhanVien<<"(tr)"<<endl;
+        fileout<<LuongCoBan*getLuongNV()<<"(tr)"<<endl;
     }
     //  long long luong*=1000000;
     // if(b =='1')
@@ -418,7 +378,6 @@ const NhanSu& NhanSu::operator=(const NhanSu& p){
         this->chucVu = p.chucVu;
         this->heSo = p.heSo;
         this->luong = p.luong;
-        this->phuCap = p.phuCap;
         this->ngayVaoLam = p.ngayVaoLam;
         this->ThucLinh = p.ThucLinh;
     }

@@ -1,6 +1,7 @@
-#include <iostream>
+#pragma once 
+#include<bits/stdc++.h>
 using namespace std;
-#pragma one 
+
 
 class TruongPhong
 {
@@ -19,12 +20,9 @@ public:
     {
         this->phuCap_TP = phuCap;
     }
+    double getLuongTP(){
+        return HSLuongTruongPhong;
+    }
 };
 
-TruongPhong::TruongPhong(/* args */)
-{
-}
 
-TruongPhong::~TruongPhong()
-{
-}

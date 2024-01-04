@@ -1,6 +1,7 @@
-#include <iostream>
+#pragma once 
+#include<bits/stdc++.h>
 using namespace std;
-#pragma one 
+
 
 class NhanVien
 {
@@ -19,12 +20,9 @@ public:
     {
         this->phuCap_NV = phuCap;
     }
+    double getLuongNV(){
+        return HSLuongNhanVien;
+    }
 };
 
-NhanVien::NhanVien(/* args */)
-{
-}
 
-NhanVien::~NhanVien()
-{
-}

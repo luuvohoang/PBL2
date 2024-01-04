@@ -1,6 +1,7 @@
-#include <iostream>
+#pragma once
+#include<bits/stdc++.h>
 using namespace std;
-#pragma one 
+
 
 class GiamDoc
 {
@@ -19,12 +20,8 @@ public:
     {
         this->phuCap_GD = phuCap;
     }
+    double getLuongGD(){
+        return HSLuongGiamDoc;
+    }
 };
 
-GiamDoc::GiamDoc(/* args */)
-{
-}
-
-GiamDoc::~GiamDoc()
-{
-}

@@ -1,12 +1,8 @@
-#include<iostream>
-#include <fstream>
-#include "NhanSu.h"
 #include "DonVi.h"
 #include "ChucVu.h"
-#include <cstring> 
-#include <string>
-using namespace std;
+#include "NhanSu.h"
 NhanSu *ds[10000];
+ChucVu  *dsCV[1000];
 // NhanSu *ds1[10000];
 string ma1, ma2;
 
@@ -25,7 +21,7 @@ string _tachho1nguoi(string hoten)
         return ho_dem;
 }
 
-// g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o a
+// g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp NhanVien.cpp PhoPhong.cpp TruongPhong.cpp PhoGiamDoc.cpp GiamDoc.cpp -o a
 
 void Xuat(){
     
@@ -67,7 +63,7 @@ void Xuat(){
             dsDV[pos]->CapNhat(ds[i]);
         }
     }
-    fileout.open("DonVi.txt", ios_base::out);
+    fileout.open("DonViOutput.txt", ios_base::out);
     fileout << "DVi\t|Ma DVi\t |Ten Don Vi\t|So luong Nhan Vien\t\t\t\t|So luong toi da \n";
     for(int i = 0; i < DonVi::countDV; i++){
         fileout << i+1 << "\t";
@@ -78,7 +74,7 @@ void Xuat(){
 
 
     // cap nhat file ChucVu
-    ChucVu  *dsCV[1000];
+    
     int countCV1 = 0;
     ChucVu::countCV = 0;
     for(int i = 0; i < NhanSu::countnv;i++){
@@ -102,11 +98,11 @@ void Xuat(){
             dsCV[pos]->CapNhat(ds[i]);
         }
     }
-    fileout.open("ChucVu.txt", ios_base::out);
+    fileout.open("ChucVuOutput.txt", ios_base::out);
     fileout << "DVi\t\t|Ma CVu\t |Ten Chuc Vu\t\t\t\t|So luong toi da \n";
     for(int i = 0; i < ChucVu::countCV; i++){
         fileout << i+1 << "\t";
-        dsCV[i]->Xuat(fileout);
+        dsCV[i]->XuatCV(fileout);
     }
     // cout << "\n\t\t\t\t Da xuat du lieu ra file ChucVu.txt !\n";
     fileout.close();  
@@ -137,6 +133,17 @@ void Menu(NhanSu *ds[], int &n){
         ds[i] = x;
         x->TinhLuong();
         NhanSu::countnv++;
+    }
+    filein.close();
+
+    filein.open("ChucVuInput.txt", ios_base::in);
+    filein >> n;
+    // nhanvien *x = NULL; 
+    for(int i = 0; i < n; i++){
+        ChucVu *x = new ChucVu();
+        x->DocFileCV(filein);
+        dsCV[i] = x;
+        ChucVu::countCV++;
     }
     filein.close();
     Xuat();

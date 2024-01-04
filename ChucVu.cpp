@@ -2,17 +2,8 @@
 
 int ChucVu::countCV = 0;
 
-void ChucVu::NhapCV(NhanSu *a){
-    this->MaCV += a->getMaCV();
-    if(MaCV == "01") this->TenCV += "Giam Doc";
-    if(MaCV == "02") this->TenCV += "Pho Giam Doc";
-    if(MaCV == "03") this->TenCV += "Truong Phong";
-    if(MaCV == "04") this->TenCV += "Pho Phong";
-    if(MaCV == "05") this->TenCV += "Nhan Vien";
-    // cout << a->getMaDV() <<"3 " <<this->TenDV << endl;
-}
 bool ChucVu::check( NhanSu* b){
-    string s = this->getMaCV1();
+    string s = this->getMaCV();
     string ss = b->getMaCV();
     if(  s == ss){
         // string s = this->getMaDV1();
@@ -24,16 +15,34 @@ bool ChucVu::check( NhanSu* b){
 void ChucVu::CapNhat(NhanSu* a){
     this->SL_CV++;
 }
-void ChucVu::Xuat(ofstream &fileout){
-    fileout <<" |"<<this->MaCV;
-    fileout <<"\t\t|" <<this-> TenCV;
-    if(TenCV.length() < 20) {
-        int l = TenCV.length();
-        while(l < 20){
-            fileout << " ";
-            l++;
+
+void ChucVu::NhapCV(NhanSu* a){
+    MaCV[countCV].first = a->getMaCV();
+    MaCV[countCV].second = a->getTenCV();
+}
+
+void ChucVu::DocFileCV(ifstream &filein){
+    string s;
+    filein >> s;
+    string cv;
+    filein >> cv;
+    MaCV.push_back({s,cv});
+
+} 
+void ChucVu::XuatCV(ofstream &fileout){
+
+    for(int i=0;i<countCV;i++){
+        fileout <<" |" << this->MaCV[i].first;
+        fileout <<"\t\t|" <<this->MaCV[i].second;
+        if(chucVu.length() < 20) {
+            int l = chucVu.length();
+            while(l < 20){
+                fileout << " ";
+                l++;
+            }
         }
+        fileout << "\t|" <<this-> SL_CV << "  ";
+        fileout << "\t|" <<this-> MaxCV << "  \n";
     }
-    fileout << "\t|" <<this-> SL_CV << "  ";
-    fileout << "\t|" <<this-> MaxCV << "  \n";
+    
 }
