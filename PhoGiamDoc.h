@@ -8,8 +8,9 @@ class PhoGiamDoc
 protected:
     double HSLuongPhoGiamDoc = 6.78;
     double phuCap_PGD;
-    string ma_PGD;
+    
 public:
+    static string ma_PGD;
     PhoGiamDoc(/* args */);
     ~PhoGiamDoc();
     void setPGD(double HSLuong)
@@ -19,6 +20,9 @@ public:
     void setPC_PGD(double phuCap)
     {
         this->phuCap_PGD = phuCap;
+    }
+    void setMa_PGD(string ma){
+        this->ma_PGD = ma;
     }
     double getLuongPGD(){
         return HSLuongPhoGiamDoc;

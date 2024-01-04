@@ -3,19 +3,19 @@
 int NhanSu::countnv = 0;
 
 void NhanSu :: TinhLuong(){
-    if(this->getMaCV() == "01"){
+    if(this->getMaCV() == GiamDoc::ma_GD){
         ThucLinh += LuongCoBan * getLuongGD();
     }
-    if(this->getMaCV() == "02"){
+    if(this->getMaCV() == PhoGiamDoc::ma_PGD){
         ThucLinh += LuongCoBan * getLuongPGD();
     }
-    if(this->getMaCV() == "03"){
+    if(this->getMaCV() == TruongPhong::ma_TP){
         ThucLinh += LuongCoBan * getLuongTP();
     }
-    if(this->getMaCV() == "04"){
+    if(this->getMaCV() == PhoPhong::ma_PP){
         ThucLinh += LuongCoBan * getLuongPP();
     }
-    if(this->getMaCV() == "05"){
+    if(this->getMaCV() == NhanVien::ma_NV){
         ThucLinh += LuongCoBan * getLuongNV();
     }
 }
@@ -228,10 +228,10 @@ void NhanSu :: Xuat(){
     else s = "Ki Thuat";
     cout << "\n\t\t\t\t Don vi: " << s;
     a = maNV[3];
-    if(a == '1') s = "Giam Doc";
-    else if(a == '2') s = "Pho Giam Doc";
-    else if(a == '3') s = "Truong Phong";
-    else if(a == '4') s = "Pho Phong";
+    if(a == GiamDoc::ma_GD[1]) s = "Giam Doc";
+    else if(a == PhoGiamDoc::ma_PGD[1]) s = "Pho Giam Doc";
+    else if(a == TruongPhong::ma_TP[1]) s = "Truong Phong";
+    else if(a == PhoPhong::ma_PP[1]) s = "Pho Phong";
     else s = "Nhan Vien";
     cout << "\n\t\t\t\t Chuc vu: " <<  s;
     cout << "\n\t\t\t\t Ngay vao lam: " << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
@@ -262,10 +262,10 @@ void NhanSu :: XuatFile(ofstream &fileout){
     else s = "Ki Thuat";
     fileout  << "\t\t |" << s;
     a = maNV[3];
-    if(a == '1') s = "Giam Doc";
-    else if(a == '2') s = "Pho Giam Doc";
-    else if(a == '3') s = "Truong Phong";
-    else if(a == '4') s = "Pho Phong";
+    if(a == GiamDoc::ma_GD[1]) s = "Giam Doc";
+    else if(a == PhoGiamDoc::ma_PGD[1]) s = "Pho Giam Doc";
+    else if(a == TruongPhong::ma_TP[1]) s = "Truong Phong";
+    else if(a == PhoPhong::ma_PP[1]) s = "Pho Phong";
     else s = "Nhan Vien";
     fileout  << "\t|" <<  s;
     if(s.length() < 12) {
@@ -278,26 +278,27 @@ void NhanSu :: XuatFile(ofstream &fileout){
     fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
     fileout << "\t     |";
     char b=maNV[3];
-    if(b =='1')
+    if(b ==GiamDoc::ma_GD[1])
     {
          fileout<<LuongCoBan*getLuongGD()<<"(tr)"<<endl;
     }
-    else if(b == '2')
+    else if(b == PhoGiamDoc::ma_PGD[1])
     {
         fileout<<LuongCoBan*getLuongPGD()<<"(tr)"<<endl;
     }
-    else if(b == '3')
+    else if(b == TruongPhong::ma_TP[1])
     {
         fileout<<LuongCoBan*getLuongTP()<<"(tr)"<<endl;
     }
-    else if(b == '4')
+    else if(b == PhoPhong::ma_PP[1])
     {
         fileout<<LuongCoBan*getLuongPP()<<"(tr)"<<endl;
     }
-    else if(b == '5')
+    else if(b == NhanVien::ma_NV[1])
     {
         fileout<<LuongCoBan*getLuongNV()<<"(tr)"<<endl;
     }
+    
     //  long long luong*=1000000;
     // if(b =='1')
     // {

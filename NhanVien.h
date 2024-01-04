@@ -8,8 +8,9 @@ class NhanVien
 protected:
     double HSLuongNhanVien = 3.63;
     double phuCap_NV;
-    string ma_NV;
+    
 public:
+    static string ma_NV;
     NhanVien(/* args */);
     ~NhanVien();
     void setLNV(double HSLuong)
@@ -19,6 +20,9 @@ public:
     void setPC(double phuCap)
     {
         this->phuCap_NV = phuCap;
+    }
+    void setMa_NV(string ma){
+        this->ma_NV = ma;
     }
     double getLuongNV(){
         return HSLuongNhanVien;

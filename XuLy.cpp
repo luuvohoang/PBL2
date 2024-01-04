@@ -139,20 +139,39 @@ void Menu(NhanSu *ds[], int &n){
         NhanSu::countnv++;
     }
     filein.close();
+    filein.open("ChucVuInput.txt", ios_base::in);
+    string s;
+    filein >> s;
+    GiamDoc::ma_GD.clear();
+    GiamDoc::ma_GD += s;
+    filein >> s;
+    PhoGiamDoc::ma_PGD.clear();
+    PhoGiamDoc::ma_PGD += s;
+    filein >> s;
+    TruongPhong::ma_TP.clear();
+    TruongPhong::ma_TP += s;
+    filein >> s;
+    PhoPhong::ma_PP.clear();
+    PhoPhong::ma_PP += s;
+    filein >> s;
+    NhanVien::ma_NV.clear();
+    NhanVien::ma_NV += s;
+    filein.close();
+
     Xuat();
 
     while (true){
         cout << "\n\n\t\t\t\t================ MENU  ==============\n";
-        cout << "\n\t\t\t\t 1. Nhap thong tin nhan vien"; // xong
+        cout << "\n\t\t\t\t 1. Nhap thong tin nhan su"; // xong
         //cout << "\n\t\t\t\t 2. Xuat thong tin nhan vien"; // xong //khong can thiet
         //cout << "\n\t\t\t\t 3. In bang thong ke theo don vi"; // khong can thiet, tu dong cap nhat                    
         cout << "\n\t\t\t\t 2. Tim kiem nhan vien theo ten";  // xong
         cout << "\n\t\t\t\t 3. Tim kiem nhan vien theo ma"; //xong
         cout << "\n\t\t\t\t 4. Xoa nhan vien"; // xong
-        cout << "\n\t\t\t\t 5. Xuat Danh Sach Nhan Vien";
+        cout << "\n\t\t\t\t 5. Xuat Danh Sach Nhan Su";
         cout << "\n\t\t\t\t 6. Xoa Don Vi"; 
         cout << "\n\t\t\t\t 7. Sap xep";     //xong
-        cout << "\n\t\t\t\t 8. Thay doi thong tin nhan vien";
+        cout << "\n\t\t\t\t 8. Thay doi thong tin nhan su";
         cout << "\n\t\t\t\t 9. Xuat Bang thong ke";// xong
         cout << "\n\t\t\t\t 0. Ket thuc";
         cout << "\n\n\t\t\t\t=====================================";
@@ -417,6 +436,7 @@ void Menu(NhanSu *ds[], int &n){
                             ds[j] = ds[j+1];
                         }
                         NhanSu::countnv --;
+                        i--;
                         cout << "Da Xoa Don Vi";
                     }
                     else {
@@ -427,6 +447,7 @@ void Menu(NhanSu *ds[], int &n){
                 
             }
             cout << "/"<<s<<"/" << endl; 
+            Xuat();
         }
         // sap xep
         else if(luachon == 7){

@@ -1,7 +1,7 @@
 DVi	 |Ma Nhan Vien	|Ho va Ten				|Nam Sinh 	| Gioi Tinh 	 |Don Vi 	|Chuc Vu 		|Ngay Vao Lam 
 1	 |01010003		|Nguyen Dinh Chuong  	|4/1/1971	| Nam  		 |Ke Toan	|Giam Doc    	|5/2/1991	     |15.408(tr)
 2	 |01020002		|Le Quang Doan       	|7/12/1970	| Nam  		 |Ke Toan	|Pho Giam Doc	|5/9/1997	     |12.204(tr)
-3	 |01030034		|Do Ngoc Khai        	|12/8/1981	| Nam  		 |Ke Toan	|Truong Phong	|1/12/2005	     |9.81(tr)
+3	 |01020034		|Do Ngoc Khai        	|12/8/1981	| Nam  		 |Ke Toan	|Pho Giam Doc	|1/12/2005	     |12.204(tr)
 4	 |01030043		|Phan Binh Kiet      	|11/3/1981	| Nam  		 |Ke Toan	|Truong Phong	|4/2/2008	     |9.81(tr)
 5	 |01040086		|Luong Nguyen Nhat Linh	|22/12/1985	| Nu  		 |Ke Toan	|Pho Phong   	|4/12/2009	     |7.776(tr)
 6	 |01040092		|Ho Hai Luan         	|19/7/1995	| Nam  		 |Ke Toan	|Pho Phong   	|6/4/2021	     |7.776(tr)

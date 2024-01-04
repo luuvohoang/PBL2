@@ -1,7 +1,7 @@
 20
 01010003, Nguyen Dinh Chuong, 04/01/1971, Nam, 05/02/1991
 01020002, Le Quang Doan, 07/12/1970, Nam, 15/09/1997
-01030034, Do Ngoc Khai, 12/08/1981, Nam, 01/12/2005
+01020034, Do Ngoc Khai, 12/08/1981, Nam, 01/12/2005
 01030043, Phan Binh Kiet, 11/03/1981, Nam, 04/02/2008
 01040086, Luong Nguyen Nhat Linh, 22/12/1985, Nu, 14/12/2009
 01040092, Ho Hai Luan, 19/07/1995, Nam, 16/04/2021
