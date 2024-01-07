@@ -21,6 +21,9 @@ public:
     void setTiLeNu(double x){
         this->TiLeNu = x;
     }
+    int getSL_NV(){
+        return SL_NV;
+    }
     virtual void NhapDV(NhanSu*);
     virtual void CapNhat(NhanSu*);
     bool check(NhanSu*);

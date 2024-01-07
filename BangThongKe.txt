@@ -1,4 +1,4 @@
-Don Vi 		 So Nhan Vien 	%Nam 			    %Nu 			    Tong Thuc Linh
-Ke Toan		 13				61.54             	38.46             	119
-Nhan Su		 6				100.00             	0.00             	53
-Ky Thuat		 1				0.00            	100.00            	6
+Don Vi			|So Nhan Vien		|%Nam		|%Nu		|Tong Thuc Linh
+Nhan Su   		|7					|100.00		|0.00		|87
+Ke Toan   		|20					|65.00		|35.00		|251
+Ky Thuat  		|1					|0.00		|100.00		|6

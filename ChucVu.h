@@ -12,6 +12,9 @@ public:
     string getMaCV1(){
         return MaCV;
     }
+    int getSL_CV(){
+        return SL_CV;
+    }
     virtual void NhapCV(NhanSu*);
     virtual void CapNhat(NhanSu*);
     bool check(NhanSu*);

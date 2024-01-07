@@ -30,31 +30,24 @@ void DonVi:: CapNhat(NhanSu* a){
     this->ThucLinh += a->getLuong();
 }
 void DonVi::Xuat(ofstream &fileout){
-    fileout <<"|"<<this->MaDV;
-    fileout <<"\t\t|" <<this-> TenDV;
-    fileout << "\t|" <<this-> SL_NV << "  ";
-    fileout << "\t\t\t\t\t\t\t|" <<this-> MaxNV << "  \n";
+    fileout <<"\t\t|"<<this->MaDV;
+    fileout <<"\t\t\t|" <<this-> TenDV;
+    fileout << "\t\t|" <<this-> SL_NV << "  ";
+    fileout << "\t\t\t\t\t|" <<this-> MaxNV << "  \n";
 }
 
 void DonVi::XuatBangThongKe(ofstream &fileout){
     fileout << this->TenDV;
-    fileout << "\t\t "<<this->SL_NV;
-    fileout << "\t\t\t\t" << fixed << setprecision(2) << TiLeNam*100/SL_NV;
-    if(TenDV.length() < 20) {
+    if(TenDV.length() < 10) {
         int l = TenDV.length();
-        while(l < 20){
+        while(l < 10){
             fileout << " ";
             l++;
         }
     }
-    fileout << "\t"<< fixed << setprecision(2) << TiLeNu*100/SL_NV;
-    if(TenDV.length() < 20) {
-        int l = TenDV.length();
-        while(l < 20){
-            fileout << " ";
-            l++;
-        }
-    }
-    fileout << "\t" << (unsigned long long)this->ThucLinh;
+    fileout << "\t\t|"<<this->SL_NV;
+    fileout << "\t\t\t\t\t|" << fixed << setprecision(2) << TiLeNam*100/SL_NV;
+    fileout << "\t\t|"<< fixed << setprecision(2) << TiLeNu*100/SL_NV;
+    fileout << "\t\t|" << (unsigned long long)this->ThucLinh;
     fileout << "\n";
 }

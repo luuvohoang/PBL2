@@ -68,6 +68,7 @@ class NhanSu : public NhanVien, public PhoPhong, public TruongPhong, public PhoG
         // virtual void DocMaCV(ifstream &);
         virtual void Nhap(string);
         virtual void Xuat();
+        virtual void XuatFileNguon(ofstream &);
         virtual void XuatFile(ofstream &); 
         virtual void TimKiem(NhanSu*);
         virtual void TimKiemNS(string);

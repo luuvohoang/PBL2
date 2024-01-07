@@ -1,19 +1,19 @@
 #include "NhanSu.h"
-//      g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp -o a
+// g++ XuLy.cpp NhanSu.cpp DonVi.cpp ChucVu.cpp NhanVien.cpp PhoPhong.cpp TruongPhong.cpp PhoGiamDoc.cpp GiamDoc.cpp -o a 
 int NhanSu::countnv = 0;
 
 void NhanSu :: TinhLuong(){
     if(this->getMaCV() == GiamDoc::ma_GD){
-        ThucLinh += LuongCoBan * getLuongGD();
+        ThucLinh += LuongCoBan * getLuongGD() + LuongCoBan * getLuongGD() * 0.5;
     }
     if(this->getMaCV() == PhoGiamDoc::ma_PGD){
-        ThucLinh += LuongCoBan * getLuongPGD();
+        ThucLinh += LuongCoBan * getLuongPGD() + LuongCoBan * getLuongPGD() * 0.5;
     }
     if(this->getMaCV() == TruongPhong::ma_TP){
-        ThucLinh += LuongCoBan * getLuongTP();
+        ThucLinh += LuongCoBan * getLuongTP() + LuongCoBan * getLuongTP() * 0.25;
     }
     if(this->getMaCV() == PhoPhong::ma_PP){
-        ThucLinh += LuongCoBan * getLuongPP();
+        ThucLinh += LuongCoBan * getLuongPP() + LuongCoBan * getLuongPP() * 0.25;
     }
     if(this->getMaCV() == NhanVien::ma_NV){
         ThucLinh += LuongCoBan * getLuongNV();
@@ -50,7 +50,7 @@ void NhanSu :: DocFile(ifstream &filein){
     gioiTinh = gt;
     // cout << gioiTinh << endl;
     int ngay1, thang1, nam1;
-    filein >> a;
+    // filein >> a;
     filein >> ngay1;
     ngayVaoLam.setNgay(ngay1);
     filein >> a;
@@ -186,7 +186,7 @@ void NhanSu :: Nhap(string s){
     }
     y2=hold;
     ngayVaoLam.setNam(hold);
-    while(d>31||d<0||m>12||m<=0||(y2-y1)<=18||(y2-y1)>70)
+    while(d>31||d<0||m>12||m<=0||(y2-y1)<=18||(y2-y1)>60)
     {
         cout<<"\t\t\t\t Nhap lai ngay, thang, nam vao lam"<<endl;
           string nvl;
@@ -214,7 +214,7 @@ void NhanSu :: Nhap(string s){
     ngayVaoLam.setNam(hold);
 }
 
-    cout << "\n\t\t\t\t Thanh cong them nhan vien !\n";
+    // cout << "\n\t\t\t\t Thanh cong them nhan vien !\n";
 }
 void NhanSu :: Xuat(){
     cout <<"\n\t\t\t\t Ma: " << maNV;
@@ -237,7 +237,7 @@ void NhanSu :: Xuat(){
     cout << "\n\t\t\t\t Ngay vao lam: " << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
 }
 void NhanSu :: XuatFile(ofstream &fileout){
-    fileout <<" |"<<maNV;
+    fileout <<"|"<<maNV;
     fileout <<"\t\t|" << hoTen;
     if(hoTen.length() < 20) {
         int l = hoTen.length();
@@ -260,7 +260,7 @@ void NhanSu :: XuatFile(ofstream &fileout){
     if(a == '1') s = "Ke Toan";
     else if(a == '2') s = "Nhan Su";
     else s = "Ki Thuat";
-    fileout  << "\t\t |" << s;
+    fileout  << "\t\t|" << s;
     a = maNV[3];
     if(a == GiamDoc::ma_GD[1]) s = "Giam Doc";
     else if(a == PhoGiamDoc::ma_PGD[1]) s = "Pho Giam Doc";
@@ -276,7 +276,7 @@ void NhanSu :: XuatFile(ofstream &fileout){
         }
     }
     fileout << "\t|" << ngayVaoLam.getNgay() <<"/" << ngayVaoLam.getThang() <<"/" << ngayVaoLam.getNam();
-    fileout << "\t     |";
+    fileout << "\t\t|";
     char b=maNV[3];
     if(b ==GiamDoc::ma_GD[1])
     {
@@ -325,6 +325,32 @@ void NhanSu :: XuatFile(ofstream &fileout){
     //      luong=LuongCoBan*HSLuongNhanVien;
     //      fileout<<luong<<endl;
     // }
+}
+
+void NhanSu :: XuatFileNguon(ofstream &fileout){
+    fileout <<maNV;
+    fileout <<", " << hoTen;
+    fileout << ", ";
+    if (namSinh.getNgay() < 10){
+        fileout << '0';
+    } 
+    fileout<< namSinh.getNgay() <<"/";
+    if (namSinh.getThang() < 10){
+        fileout << '0';
+    } 
+    fileout << namSinh.getThang() <<"/";
+    fileout << namSinh.getNam();
+    fileout << "," << gioiTinh;
+    fileout << ", ";
+    if (ngayVaoLam.getNgay() < 10){
+        fileout << '0';
+    } 
+    fileout<< ngayVaoLam.getNgay() <<"/";
+    if (ngayVaoLam.getThang() < 10){
+        fileout << '0';
+    } 
+    fileout << ngayVaoLam.getThang() <<"/";
+    fileout << ngayVaoLam.getNam()<<'\n';
 }
 
 void NhanSu::TimKiemNS(string s){

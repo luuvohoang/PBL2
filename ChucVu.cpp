@@ -25,15 +25,15 @@ void ChucVu::CapNhat(NhanSu* a){
     this->SL_CV++;
 }
 void ChucVu::Xuat(ofstream &fileout){
-    fileout <<" |"<<this->MaCV;
-    fileout <<"\t\t|" <<this-> TenCV;
-    if(TenCV.length() < 20) {
+    fileout <<"\t\t|"<<this->MaCV;
+    fileout <<"\t\t\t|" <<this-> TenCV;
+    if(TenCV.length() < 12) {
         int l = TenCV.length();
-        while(l < 20){
+        while(l < 12){
             fileout << " ";
             l++;
         }
     }
-    fileout << "\t|" <<this-> SL_CV << "  ";
-    fileout << "\t|" <<this-> MaxCV << "  \n";
+    fileout << "\t\t|" <<this-> SL_CV;
+    fileout << "\t\t\t\t\t\t|" <<this-> MaxCV << "\n";
 }
