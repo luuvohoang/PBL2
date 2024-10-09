@@ -1,4 +1,3 @@
-flowchart TD
     A[Khởi tạo] --> B{Danh sách mở rỗng hoặc tìm thấy đích?}
     B -->|Không| C[Chọn nút có f thấp nhất từ danh sách mở]
     C --> D[Di chuyển nút này từ danh sách mở sang danh sách đóng]
